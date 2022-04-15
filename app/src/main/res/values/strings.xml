@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">book_store</string>
+    <string name="logo">BOOK STORE</string>
 </resources>

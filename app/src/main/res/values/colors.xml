@@ -2,6 +2,7 @@
 <resources>
     <color name="primary_color">#2C55A5</color>
     <color name="background">#f4f4f4</color>
+    <color name="second_color">#5685e3</color>
     <color name="text_second">#828282</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

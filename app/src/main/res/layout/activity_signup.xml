@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".SignupActivity"
     android:gravity="center"
     android:background="@color/primary_color"
     android:orientation="vertical"
@@ -23,10 +23,26 @@
             android:textSize="18sp"
             android:textColor="@color/text_second"
             android:fontFamily="@font/roboto_regular"
+            android:text="Họ tên"
+            android:paddingLeft="3dp">
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Nhập họ tên của bạn.."
+            android:textColor="@color/text_second"
+            android:textSize="16sp"></EditText>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/text_second"
+            android:fontFamily="@font/roboto_regular"
             android:text="Email"
             android:paddingLeft="3dp">
         </TextView>
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +76,7 @@
             android:background="@color/primary_color"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="ĐĂNG NHẬP">
+            android:text="ĐĂNG KÝ">
         </Button>
         <Button
             android:layout_marginTop="20dp"
@@ -69,7 +85,7 @@
             android:background="@color/red"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="ĐĂNG KÝ">
+            android:text="ĐĂNG NHẬP">
         </Button>
     </LinearLayout>
 

@@ -2,11 +2,19 @@ package com.example.book_store;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +53,7 @@ public class SearchFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    GridView gridView;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +67,23 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_search, container, false);
+        gridView = (GridView) rootView.findViewById(R.id.gridview_book);
+        ArrayList<Book> list = new ArrayList<>();
+        list.add(new Book(1,"aaa",550500,R.drawable.book));
+        list.add(new Book(2,"aaanfnkkkmkmkmkmkmkmkmkmkmkmkkkkkkkkkkkkkkkkkkkkkkkkkkkk",500,R.drawable.book));
+        list.add(new Book(3,"aaabbb",500,R.drawable.book));
+        BookAdpater adpater = new BookAdpater(getContext(),list);
+        gridView.setAdapter(adpater);
+        return rootView;
     }
+
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        menu.clear();
+//        inflater.inflate(R.menu.menu_bottom_nav,menu);
+//        MenuItem searchItem = menu.findItem(R.id.search);
+//        SearchView searchView = new SearchView((MainActivity.this).getSupportActionBar().getThemedContext());
+//    }
 }

@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtPhone,txtPass;
     Button btnLogin, btnRegister;
     private User user;
+    public static final String USER_KEY = "current user";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +48,18 @@ public class LoginActivity extends AppCompatActivity {
                                 final User user = snapshot.child(phone).getValue(User.class);
                                 if(user.getPassword().equals(pass)){
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                                    //Main menu Activity
-                                    //Gui user
+                                    //is admin
+                                    if(user.getIsAdmin() == 1){
+
+                                    }
+                                    else{
+                                        //Main menu Activity
+                                        //Gui user
+                                        Intent menu = new Intent(getApplicationContext(),MenuActivity.class);
+                                        menu.putExtra(USER_KEY,user);
+                                        startActivity(menu);
+                                    }
+
                                 }
                                 else{
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thất bại!\nVui lòng thử lại", Toast.LENGTH_LONG).show();

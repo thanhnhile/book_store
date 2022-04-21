@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.book_store.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -16,10 +17,18 @@ public class MenuActivity extends AppCompatActivity {
     SearchFragment searchFragment = new SearchFragment();
     CartFragment cartFragment = new CartFragment();
     AccountFragment accountFragment = new AccountFragment();
+
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        initUI();
+        //Get user from Login
+        user = getIntent().getParcelableExtra(LoginActivity.USER_KEY);
+
+    }
+    private void initUI(){
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.menu_nav);
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

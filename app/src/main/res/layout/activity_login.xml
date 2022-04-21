@@ -23,15 +23,16 @@
             android:textSize="18sp"
             android:textColor="@color/text_second"
             android:fontFamily="@font/roboto_regular"
-            android:text="Email"
+            android:text="SĐT"
             android:paddingLeft="3dp">
         </TextView>
 
         <EditText
+            android:id="@+id/login_txtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Nhập email.."
+            android:hint="Nhập số điện thoại.."
             android:textColor="@color/text_second"
             android:textSize="16sp"></EditText>
         <TextView
@@ -46,6 +47,7 @@
         </TextView>
 
         <EditText
+            android:id="@+id/login_txtPass"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
@@ -54,6 +56,7 @@
             android:textColor="@color/text_second"
             android:textSize="16sp"></EditText>
         <Button
+            android:id="@+id/login_btnLogin"
             android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,6 +66,7 @@
             android:text="ĐĂNG NHẬP">
         </Button>
         <Button
+            android:id="@+id/login_btnRegister"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

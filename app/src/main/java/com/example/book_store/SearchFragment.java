@@ -2,17 +2,15 @@ package com.example.book_store;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
+
+import com.example.book_store.model.Book;
 
 import java.util.ArrayList;
 
@@ -69,12 +67,12 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
         gridView = (GridView) rootView.findViewById(R.id.gridview_book);
-        ArrayList<Book> list = new ArrayList<>();
-        list.add(new Book(1,"aaa",550500,R.drawable.book));
-        list.add(new Book(2,"aaanfnkkkmkmkmkmkmkmkmkmkmkmkkkkkkkkkkkkkkkkkkkkkkkkkkkk",500,R.drawable.book));
-        list.add(new Book(3,"aaabbb",500,R.drawable.book));
-        BookAdpater adpater = new BookAdpater(getContext(),list);
-        gridView.setAdapter(adpater);
+//        ArrayList<Book> list = new ArrayList<>();
+//        list.add(new Book(1,"aaa",550500,R.drawable.book));
+//        list.add(new Book(2,"aaanfnkkkmkmkmkmkmkmkmkmkmkmkkkkkkkkkkkkkkkkkkkkkkkkkkkk",500,R.drawable.book));
+//        list.add(new Book(3,"aaabbb",500,R.drawable.book));
+//        BookAdpater adpater = new BookAdpater(getContext(),list);
+//        gridView.setAdapter(adpater);
         return rootView;
     }
 

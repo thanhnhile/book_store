@@ -80,6 +80,7 @@
             android:background="@color/primary_color"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:enabled="true"
             android:text="ĐĂNG KÝ">
         </Button>
         <Button
@@ -90,6 +91,7 @@
             android:background="@color/red"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:enabled="true"
             android:text="ĐĂNG NHẬP">
         </Button>
     </LinearLayout>

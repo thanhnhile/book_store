@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CRUDFragment"
+     android:orientation="vertical"
+    android:padding="@dimen/activity_vertical_margin"
+    android:layout_gravity="center"
+    android:background="@color/background">
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:hint="Nhập tên sách"
+        android:paddingTop="5sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shape"
+        android:layout_marginBottom="15dp">
+    </EditText>
+    <EditText
+        android:hint="Nhập tác giả"
+        android:paddingTop="5sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shape"
+        android:layout_marginBottom="15dp">
+    </EditText>
+    <EditText
+        android:hint="Nhập thể loại"
+        android:paddingTop="5sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shape"
+        android:layout_marginBottom="15dp">
+    </EditText>
+    <EditText
+        android:hint="Nhập số trang"
+        android:paddingTop="5sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shape"
+        android:layout_marginBottom="15dp">
+    </EditText>
+    <EditText
+        android:hint="Nhập mô tả"
+        android:height="100sp"
+        android:gravity="top"
+        android:paddingTop="5sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shape"
+        android:layout_marginBottom="15dp">
+    </EditText>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:background="@color/white"
+            android:layout_width="150dp"
+            android:paddingTop="10dp"
+            android:layout_height="150dp"
+            android:src="@drawable/book"
+            android:layout_marginRight="15dp">
+        </ImageView>
+        <Button
+            android:id="@+id/login_btnRegister"
+            android:layout_width="30sp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/ic_baseline_edit"
+            android:enabled="true">
+        </Button>
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:enabled="true"
+        android:textAllCaps="true"
+        android:text="Thêm sách"></Button>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

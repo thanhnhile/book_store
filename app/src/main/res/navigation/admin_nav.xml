@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_nav"
+    app:startDestination="@id/CRUDFragment">
+
+    <fragment
+        android:id="@+id/CRUDFragment"
+        android:name="com.example.book_store.CRUDFragment"
+        android:label="fragment_c_r_u_d"
+        tools:layout="@layout/fragment_c_r_u_d" />
+    <fragment
+        android:id="@+id/orderListFragment"
+        android:name="com.example.book_store.OrderListFragment"
+        android:label="fragment_order_list"
+        tools:layout="@layout/fragment_order_list" />
+</navigation>

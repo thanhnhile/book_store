@@ -2,9 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/crud"
         android:title="@string/title_crud"
-        android:icon="@drawable/ic_baseline_add_to_photos_24"
-        ></item>
+        android:icon="@drawable/ic_baseline_add_to_photos_24">
+    </item>
+    <item android:id="@+id/category"
+        android:title="@string/title_category"
+        android:icon="@drawable/ic_baseline_edit"></item>
     <item android:id="@+id/order"
         android:title="@string/title_order"
         android:icon="@drawable/ic_baseline_timeline_24"></item>
+
 </menu>

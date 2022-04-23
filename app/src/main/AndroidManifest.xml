@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AdminMenuActivity"
+            android:name=".admin.AdminMenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

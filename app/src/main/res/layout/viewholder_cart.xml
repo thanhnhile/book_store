@@ -8,82 +8,82 @@
     android:layout_marginEnd="16dp"
     android:layout_marginBottom="10dp"
     android:elevation="3dp">
-    <ImageView
-        android:id="@+id/imgsanpham"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/book"/>
-    <TextView
-        android:id="@+id/txttensanpham"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
-        android:text="Mắt biếc"
-        android:textColor="@color/text_second"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imgsanpham"
-        app:layout_constraintTop_toTopOf="@+id/imgsanpham" />
-    <Button
-        android:id="@+id/btngiamsoluong"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@color/primary_color"
-        android:text="-"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imgsanpham"
-        app:layout_constraintStart_toEndOf="@+id/imgsanpham" />
-    <TextView
-        android:id="@+id/txtsoluong"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
-        android:text="1"
-        android:textColor="@color/text_second"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btngiamsoluong"
-        app:layout_constraintStart_toEndOf="@+id/btngiamsoluong"
-        app:layout_constraintTop_toTopOf="@+id/btngiamsoluong" />
-    <Button
-        android:id="@+id/btntangsoloung"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="9dp"
-        android:background="@color/primary_color"
-        android:text="+"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/btngiamsoluong"
-        app:layout_constraintStart_toEndOf="@+id/txtsoluong"
-        app:layout_constraintTop_toTopOf="@+id/btngiamsoluong" />
-    <TextView
-        android:id="@+id/txtgiasanpham"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="0 VND"
-        android:textColor="@color/text_second"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/txttensanpham"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toTopOf="@+id/txttensanpham"/>
-    <TextView
-        android:id="@+id/txttongtiensanpham"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 VND"
-        android:textColor="@color/text_second"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btntangsoloung"
-        app:layout_constraintEnd_toEndOf="@+id/txtgiasanpham"
-        app:layout_constraintStart_toTopOf="@+id/btntangsoloung" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imgsanpham"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/book"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/txttensanpham"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Mắt biếc"-->
+<!--        android:textColor="@color/text_second"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/imgsanpham"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/imgsanpham" />-->
+<!--    <Button-->
+<!--        android:id="@+id/btngiamsoluong"-->
+<!--        android:layout_width="35dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:background="@color/primary_color"-->
+<!--        android:text="-"-->
+<!--        android:textSize="25sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imgsanpham"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/imgsanpham" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/txtsoluong"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:text="1"-->
+<!--        android:textColor="@color/text_second"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/btngiamsoluong"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/btngiamsoluong"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btngiamsoluong" />-->
+<!--    <Button-->
+<!--        android:id="@+id/btntangsoloung"-->
+<!--        android:layout_width="35dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:layout_marginStart="9dp"-->
+<!--        android:background="@color/primary_color"-->
+<!--        android:text="+"-->
+<!--        android:textSize="25sp"-->
+<!--        android:textColor="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/btngiamsoluong"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/txtsoluong"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btngiamsoluong" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/txtgiasanpham"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:text="0 VND"-->
+<!--        android:textColor="@color/text_second"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/txttongtiensanpham"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toTopOf="parent"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/txttongtiensanpham"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="0 VND"-->
+<!--        android:textColor="@color/text_second"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/btntangsoloung"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/txtgiasanpham"-->
+<!--        app:layout_constraintStart_toTopOf="@+id/btntangsoloung" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

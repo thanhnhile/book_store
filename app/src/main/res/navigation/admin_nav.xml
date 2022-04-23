@@ -7,12 +7,17 @@
 
     <fragment
         android:id="@+id/CRUDFragment"
-        android:name="com.example.book_store.CRUDFragment"
+        android:name="com.example.book_store.admin.CRUDFragment"
         android:label="fragment_c_r_u_d"
         tools:layout="@layout/fragment_c_r_u_d" />
     <fragment
         android:id="@+id/orderListFragment"
-        android:name="com.example.book_store.OrderListFragment"
+        android:name="com.example.book_store.admin.OrderListFragment"
         android:label="fragment_order_list"
         tools:layout="@layout/fragment_order_list" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.book_store.admin.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" />
 </navigation>

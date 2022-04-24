@@ -1,4 +1,4 @@
-package com.example.book_store;
+package com.example.book_store.CustomAdapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.book_store.R;
 import com.example.book_store.model.Book;
 
 import java.util.ArrayList;

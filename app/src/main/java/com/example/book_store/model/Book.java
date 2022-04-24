@@ -1,27 +1,41 @@
 package com.example.book_store.model;
 
-import java.util.ArrayList;
-
 public class Book {
     private String id;
     private String title;
-    private ArrayList<Author> authors;
+    private Author author;
     private String category;
     private String imgURL;
-    private int pageCount;
+    private int year;
+    private int price;
+    private int inStock;
     private String description;
+    private int isActive;
+
 
     public Book() {
     }
 
-    public Book(String id, String title, ArrayList<Author> authors, String category, String imgURL, int pageCount, String description) {
+    public Book(String id, String title, Author author, String category, String imgURL,
+                int year, int price, int inStock, String description, int isActive) {
         this.id = id;
         this.title = title;
-        this.authors = authors;
+        this.author = author;
         this.category = category;
         this.imgURL = imgURL;
-        this.pageCount = pageCount;
+        this.year = year;
+        this.price = price;
+        this.inStock = inStock;
         this.description = description;
+        this.isActive = isActive;
+    }
+
+    public int getInStock() {
+        return inStock;
+    }
+
+    public void setInStock(int inStock) {
+        this.inStock = inStock;
     }
 
     public String getId() {
@@ -40,12 +54,12 @@ public class Book {
         this.title = title;
     }
 
-    public ArrayList<Author> getAuthors() {
-        return authors;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthors(ArrayList<Author> authors) {
-        this.authors = authors;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public String getCategory() {
@@ -64,12 +78,20 @@ public class Book {
         this.imgURL = imgURL;
     }
 
-    public int getPageCount() {
-        return pageCount;
+    public int getYear() {
+        return year;
     }
 
-    public void setPageCount(int pageCount) {
-        this.pageCount = pageCount;
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getDescription() {
@@ -78,5 +100,13 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
     }
 }

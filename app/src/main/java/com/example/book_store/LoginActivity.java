@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.book_store.admin.AdminMenuActivity;
 import com.example.book_store.model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                     //is admin
                                     if(user.getIsAdmin() == 1){
-                                        Intent adminMenu = new Intent(getApplicationContext(),AdminMenuActivity.class);
+                                        Intent adminMenu = new Intent(getApplicationContext(), AdminMenuActivity.class);
                                         adminMenu.putExtra(USER_KEY,user);
                                         startActivity(adminMenu);
                                     }

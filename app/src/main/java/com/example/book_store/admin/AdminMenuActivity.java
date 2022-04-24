@@ -1,4 +1,4 @@
-package com.example.book_store;
+package com.example.book_store.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,12 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.book_store.R;
+import com.example.book_store.admin.CRUDFragment;
+import com.example.book_store.admin.CategoryFragment;
+import com.example.book_store.admin.OrderListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class AdminMenuActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     CRUDFragment crudFragment = new CRUDFragment();
+    CategoryFragment categoryFragment = new CategoryFragment();
     OrderListFragment orderListFragment = new OrderListFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,9 @@ public class AdminMenuActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.crud:
                         getSupportFragmentManager().beginTransaction().replace(R.id.admin_menu_container,crudFragment).commit();
+                        return true;
+                    case R.id.category:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.admin_menu_container,categoryFragment).commit();
                         return true;
                     case R.id.order:
                         getSupportFragmentManager().beginTransaction().replace(R.id.admin_menu_container,orderListFragment).commit();

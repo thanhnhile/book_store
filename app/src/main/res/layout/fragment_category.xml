@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.CategoryFragment"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/category"
+        android:layout_marginBottom="@dimen/activity_vertical_margin">
+    </ImageView>
+    <EditText
+        android:id="@+id/category_txt"
+        android:hint="Nhập thể loại"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="5sp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shape"
+        android:layout_marginBottom="15dp">
+    </EditText>
+    <Button
+        android:id="@+id/category_btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_color"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:enabled="true"
+        android:textAllCaps="true"
+        android:layout_gravity="end"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:text="Thêm thể loại">
+    </Button>
+    <View style="@style/Divider.Horizontal"
+        android:layout_margin="@dimen/activity_horizontal_margin"/>
+    <ListView
+        android:id="@+id/category_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

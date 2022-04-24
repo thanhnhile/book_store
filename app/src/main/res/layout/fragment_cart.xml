@@ -85,6 +85,17 @@
                     android:enabled="true"
                     android:text="Thanh Toán">
                 </Button>
+                <Button
+                    android:id="@+id/cart_btnBack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/red"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:enabled="true"
+                    android:text="Tiếp tục mua hàng">
+                </Button>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

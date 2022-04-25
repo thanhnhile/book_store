@@ -1,160 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admin.CRUDFragment"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_vertical_margin"
-    android:layout_gravity="center"
-    android:background="@color/background">
+    >
     <!-- TODO: Update blank fragment layout -->
-    <EditText
-        android:id="@+id/crud_title"
-        android:hint="Tên sách"
-        android:paddingTop="5sp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="18sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_shape"
-        android:layout_marginBottom="15dp">
-    </EditText>
-    <EditText
-        android:id="@+id/crud_author"
-        android:hint="Tác giả"
-        android:paddingTop="5sp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="18sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_shape"
-        android:layout_marginBottom="15dp">
-    </EditText>
-    <TextView
-        android:paddingLeft="5dp"
-        android:textSize="18sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Chọn thể loại"
-        android:layout_marginBottom="10dp">
-    </TextView>
-    <Spinner
-        android:id="@+id/crud_categorys"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:background="@color/white"/>
-    <EditText
-        android:id="@+id/crud_year"
-        android:hint="Năm xuất bản"
-        android:paddingTop="5sp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="18sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_shape"
-        android:layout_marginBottom="15dp">
-    </EditText>
-    <EditText
-        android:id="@+id/crud_in_stock"
-        android:hint="Số lượng"
-        android:inputType="numberDecimal"
-        android:paddingTop="5sp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="18sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_shape"
-        android:layout_marginBottom="15dp">
-    </EditText>
-    <EditText
-        android:id="@+id/crud_des"
-        android:hint="Mô tả"
-        android:height="100sp"
-        android:gravity="top"
-        android:paddingTop="5sp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="18sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_shape"
-        android:layout_marginBottom="15dp">
-    </EditText>
-    <EditText
-        android:id="@+id/crud_price"
-        android:hint="Giá bán"
-        android:paddingTop="5sp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="18sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_shape"
-        android:layout_marginBottom="15dp">
-    </EditText>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
-        <ImageView
-            android:id="@+id/crud_img"
-            android:background="@color/white"
-            android:layout_width="150dp"
-            android:paddingTop="10dp"
-            android:layout_height="150dp"
-            android:src="@drawable/book"
-            android:layout_marginRight="15dp">
-        </ImageView>
-        <Button
-            android:id="@+id/crud_btn_img"
-            android:layout_width="30sp"
-            android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin"
+        android:layout_gravity="center"
+        android:background="@color/background">
+        <EditText
+            android:layout_marginTop="60dp"
+            android:id="@+id/crud_title"
+            android:hint="Tên sách"
+            android:paddingTop="5sp"
+            android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:background="@drawable/ic_baseline_edit"
-            android:enabled="true">
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_shape"
+            android:layout_marginBottom="15dp">
+        </EditText>
+        <EditText
+            android:id="@+id/crud_author"
+            android:hint="Tác giả"
+            android:paddingTop="5sp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_shape"
+            android:layout_marginBottom="15dp">
+        </EditText>
+        <TextView
+            android:paddingLeft="5dp"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chọn thể loại"
+            android:layout_marginBottom="10dp">
+        </TextView>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/crud_categorys"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/round_shape"
+            android:spinnerMode="dialog" />
+        <EditText
+            android:id="@+id/crud_year"
+            android:hint="Năm xuất bản"
+            android:paddingTop="5sp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_shape"
+            android:layout_marginBottom="15dp">
+        </EditText>
+        <EditText
+            android:id="@+id/crud_in_stock"
+            android:hint="Số lượng"
+            android:inputType="numberDecimal"
+            android:paddingTop="5sp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_shape"
+            android:layout_marginBottom="15dp">
+        </EditText>
+        <EditText
+            android:id="@+id/crud_des"
+            android:hint="Mô tả"
+            android:height="100sp"
+            android:gravity="top"
+            android:paddingTop="5sp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_shape"
+            android:layout_marginBottom="15dp">
+        </EditText>
+        <EditText
+            android:id="@+id/crud_price"
+            android:hint="Giá bán"
+            android:paddingTop="5sp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_shape"
+            android:layout_marginBottom="15dp">
+        </EditText>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+            <ImageView
+                android:id="@+id/crud_img"
+                android:background="@color/white"
+                android:layout_width="150dp"
+                android:paddingTop="10dp"
+                android:layout_height="150dp"
+                android:src="@drawable/book"
+                android:layout_marginRight="15dp">
+            </ImageView>
+            <Button
+                android:id="@+id/crud_btn_img"
+                android:layout_width="40sp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/ic_baseline_image_search"
+                android:enabled="true">
+            </Button>
+        </LinearLayout>
+        <Switch
+            android:id="@+id/crud_sw_active"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:text="Hiện sách"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/text_second"
+            android:textSize="18sp"
+            android:thumbTint="@color/primary_color"
+            android:layout_height="wrap_content">
+        </Switch>
+
+        <Button
+            android:id="@+id/crud_btn_add"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_color"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:enabled="true"
+            android:textAllCaps="true"
+            android:text="Thêm sách">
         </Button>
+        <ListView
+            android:id="@+id/crud_lv_book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
     </LinearLayout>
-    <Switch
-        android:id="@+id/crud_sw_active"
-        android:layout_width="wrap_content"
-        android:checked="true"
-        android:text="Hiện sách"
-        android:fontFamily="@font/roboto_regular"
-        android:textColor="@color/text_second"
-        android:textSize="18sp"
-        android:thumbTint="@color/primary_color"
-        android:layout_height="wrap_content">
-    </Switch>
 
-    <Button
-        android:id="@+id/crud_btn_add"
-        android:layout_marginTop="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_color"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:enabled="true"
-        android:textAllCaps="true"
-        android:text="Thêm sách">
-    </Button>
-    <ListView
-        android:id="@+id/crud_lv_book"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

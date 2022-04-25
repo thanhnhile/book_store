@@ -3,7 +3,7 @@ package com.example.book_store.model;
 public class Book {
     private String id;
     private String title;
-    private Author author;
+    private String author;
     private String category;
     private String imgURL;
     private int year;
@@ -12,12 +12,7 @@ public class Book {
     private String description;
     private int isActive;
 
-
-    public Book() {
-    }
-
-    public Book(String id, String title, Author author, String category, String imgURL,
-                int year, int price, int inStock, String description, int isActive) {
+    public Book(String id, String title, String author, String category, String imgURL, int year, int price, int inStock, String description, int isActive) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -29,6 +24,10 @@ public class Book {
         this.description = description;
         this.isActive = isActive;
     }
+
+    public Book() {
+    }
+
 
     public int getInStock() {
         return inStock;
@@ -54,11 +53,11 @@ public class Book {
         this.title = title;
     }
 
-    public Author getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

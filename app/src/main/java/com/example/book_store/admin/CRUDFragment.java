@@ -38,7 +38,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.book_store.R;
+import com.example.book_store.dao.BookDao;
 import com.example.book_store.model.Book;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -74,7 +76,7 @@ public class CRUDFragment extends Fragment {
     EditText txtTitle, txtAuthor,txtYear,txtPrice,txtNum,txtDes;
     Switch swActive;
     Spinner snCategory;
-    Button btnAdd,btnAddImg;
+    Button btnAdd,btnAddImg,btnUpdate;
     ImageView img;
     Uri imgUri;
     Book book;
@@ -109,6 +111,15 @@ public class CRUDFragment extends Fragment {
         btnAddImg = (Button) view.findViewById(R.id.crud_btn_img) ;
         //Button add book to DB
         btnAdd = (Button) view.findViewById(R.id.crud_btn_add);
+        //Button update
+        btnUpdate = (Button) view.findViewById(R.id.crud_btn_update);
+        //Get arguments
+        Bundle bundle = this.getArguments();
+        //Update
+        if(bundle!=null){
+            String id = bundle.getString("BOOK_ID");
+            handleUpdate(id);
+        }
         //take image from gallery
         getImage = registerForActivityResult(
                 new ActivityResultContracts.GetContent(),
@@ -139,6 +150,100 @@ public class CRUDFragment extends Fragment {
 
             }
         });
+    }
+
+    private void handleUpdate(String id){
+        //init UI
+        btnUpdate.setVisibility(View.VISIBLE);
+        btnAdd.setVisibility(View.INVISIBLE);
+        //get Data
+        myRef = database.getReference("Books");
+        Book book = new Book();
+        book.setId(id);
+        BookDao dao = new BookDao(book);
+        dao.readData();
+        //biding
+        txtTitle.setText(book.getTitle());
+        txtAuthor.setText(book.getAuthor());
+        txtDes.setText(book.getDescription());
+        txtNum.setText(Integer.toString(book.getInStock()));
+        txtPrice.setText(Integer.toString(book.getPrice()));
+        txtYear.setText(Integer.toString(book.getYear()));
+        //get image from URL
+        Glide.with(getContext()).load(book.getImgURL()).into(img);
+        //Update
+//        btnUpdate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                myRef = database.getReference("Books");
+//                //Check data valid
+//                String title = txtTitle.getText().toString();
+//                String author = txtAuthor.getText().toString();
+//                String category = String.valueOf(snCategory.getSelectedItem());
+//                String year = txtYear.getText().toString();
+//                String price = txtPrice.getText().toString();
+//                String inStock = txtNum.getText().toString();
+//                //int year = Integer.parseInt(txtYear.getText().toString());
+//                //int price = Integer.parseInt(txtPrice.getText().toString());
+//                //int inStock = Integer.parseInt(txtNum.getText().toString());
+//                String desc = txtDes.getText().toString();
+//                int isActive = 1;
+//                if(!swActive.isChecked()){
+//                    isActive = 0;
+//                }
+//                if(isValid(title,author,category,year,price,inStock,desc)){
+//                    //Upload image and get link
+//                    if(imgUri != null){
+//                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.CANADA);
+//                        Date now = new Date();
+//                        String fileName = formatter.format(now);
+//                        storageReference = FirebaseStorage.getInstance().getReference("images/"+fileName);
+//                        int finalIsActive = isActive;
+//                        storageReference.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                            @Override
+//                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                    @Override
+//                                    public void onSuccess(Uri uri) {
+//                                        String imgURL = uri.toString();
+//                                        book.setImgURL(imgURL);
+//                                        //Add to DB
+//                                        if(book.getImgURL() != null){
+//                                            //Create book object
+//                                            book.setTitle(title);
+//                                            book.setAuthor(author);
+//                                            book.setCategory(category);
+//                                            book.setYear(Integer.parseInt(year));
+//                                            book.setPrice(Integer.parseInt(price));
+//                                            book.setInStock(Integer.parseInt(inStock));
+//                                            book.setDescription(desc);
+//                                            book.setIsActive(finalIsActive);
+//                                            addBookToFirebase(book);
+//                                        }
+//                                    }
+//                                });
+//                            }
+//                        }).addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                dialog.dismiss();
+//                                Toast.makeText(getContext(), "Tải hình ảnh thất bại", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                            @Override
+//                            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+//                                dialog.show();
+//                            }
+//                        });
+//
+//                    }
+//                    else {
+//                        Toast.makeText(getContext(), "Ảnh bìa không được để trống", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                }
+//            }
+//        });
     }
     private void onAddClick(){
         myRef = database.getReference("Books");

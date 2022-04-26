@@ -82,21 +82,22 @@
             android:background="@drawable/round_shape"
             android:layout_marginBottom="15dp">
         </EditText>
+
         <EditText
             android:id="@+id/crud_des"
-            android:hint="Mô tả"
-            android:height="100sp"
-            android:gravity="top"
-            android:paddingTop="5sp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:height="100sp"
             android:background="@drawable/round_shape"
-            android:layout_marginBottom="15dp">
-        </EditText>
+            android:gravity="top"
+            android:hint="Mô tả"
+            android:paddingLeft="10dp"
+            android:paddingTop="5sp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:textSize="18sp"></EditText>
+
         <EditText
             android:id="@+id/crud_price"
             android:inputType="numberDecimal"
@@ -157,6 +158,19 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:enabled="true"
+            android:textAllCaps="true"
+            android:text="Thêm sách">
+        </Button>
+        <Button
+            android:id="@+id/crud_btn_update"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:enabled="true"
+            android:visibility="invisible"
             android:textAllCaps="true"
             android:text="Thêm sách">
         </Button>

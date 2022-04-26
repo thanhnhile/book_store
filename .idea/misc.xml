@@ -13,27 +13,37 @@
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/font/robonto.xml" value="0.234375" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/font/roboto.xml" value="0.234375" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/font/roboto_light.xml" value="0.234375" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_admin_menu.xml" value="0.33" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_login.xml" value="0.18" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_admin_menu.xml" value="0.22" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_menu.xml" value="0.18" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_menu.xml" value="0.22" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/book_layout.xml" value="0.33" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_account.xml" value="0.19722222222222222" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_book_list.xml" value="0.22" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_c_r_u_d.xml" value="0.25" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_cart.xml" value="0.25" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_category.xml" value="0.25" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_check_out.xml" value="0.25" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_c_r_u_d.xml" value="0.22" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_cart.xml" value="0.33" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_order_list.xml" value="0.159375" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_search.xml" value="0.18" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/style_spinner.xml" value="0.33" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/viewholder_cart.xml" value="0.22" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/menu/admin_menu.xml" value="0.25" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/menu/admin_menu.xml" value="0.159375" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/menu/menu_bottom_nav.xml" value="0.20416666666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1005" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/drawable/ic_account_circle.xml" value="0.2595" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/drawable/ic_baseline_add_to_photos_24.xml" value="0.2595" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/drawable/ic_baseline_edit.xml" value="0.2595" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/drawable/ic_menu_camera.xml" value="0.2595" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/content_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_cart.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_check_out.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_checkout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_infor.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_update_infor.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/viewholder_cart.xml" value="0.264" />
       </map>
     </option>
   </component>
@@ -42,5 +52,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
   </component>
 </project>

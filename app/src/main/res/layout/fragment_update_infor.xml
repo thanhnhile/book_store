@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UpdateInforFragment"
+    android:gravity="center"
+    android:background="@color/primary_color"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_shape"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CHỈNH SỬA THÔNG TIN TÀI KHOẢN"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_color"
+                    android:textSize="27sp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="18dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Họ và tên : "
+                        android:textColor="@color/text_second"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/updateinfor_txtname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="Tran Huu Khanh Vy"
+                        android:textColor="@color/text_second"
+                        android:textSize="16sp"></EditText>
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Số điện thoại : "
+                        android:textColor="@color/text_second"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/updateinfor_txtphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="0961516234"
+                        android:textColor="@color/text_second"
+                        android:textSize="16sp"></EditText>
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Địa chỉ : "
+                        android:textColor="@color/text_second"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/updateinfor_txtaddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="01 Vo Van Ngan"
+                        android:textColor="@color/text_second"
+                        android:textSize="16sp"></EditText>
+                    <Button
+                        android:id="@+id/updateinfor_btnUpdate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/primary_color"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:enabled="true"
+                        android:text="LƯU THÔNG TIN TÀI KHOẢN">
+                    </Button>
+                    <Button
+                        android:id="@+id/updateinfor_btnBack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/red"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:enabled="true"
+                        android:text="Trở về">
+                    </Button>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>

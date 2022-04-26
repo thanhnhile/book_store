@@ -55,6 +55,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -126,21 +127,9 @@ public class CRUDFragment extends Fragment {
         //Dialog
         setProgressDialog();
         //Handle event
-        onEditTextOnFocus();
         onGetImageClick();
         onAddClick();
         return view;
-    }
-    private void onEditTextOnFocus(){
-
-        txtTitle.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (hasFocus)
-                    scrollView.smoothScrollTo(txtTitle.getLeft(),
-                            txtTitle.getTop());
-            }
-        });
     }
     private void onGetImageClick(){
         btnAddImg.setOnClickListener(new View.OnClickListener() {
@@ -234,6 +223,7 @@ public class CRUDFragment extends Fragment {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     dialog.dismiss();
+                    clearEditText();
                     Toast.makeText(getContext(), "Thêm sách thành công", Toast.LENGTH_SHORT).show();
                 }
 
@@ -280,6 +270,21 @@ public class CRUDFragment extends Fragment {
             Toast.makeText(getContext(), "Các trường không được để trống", Toast.LENGTH_SHORT).show();
             return false;
         }
+        int y = Integer.parseInt(year);
+        int num = Integer.parseInt(inStock);
+        int p = Integer.parseInt(price);
+        if(y < 0 && y > Year.now().getValue()){
+            Toast.makeText(getContext(), "Năm xuất bản không hợp lệ", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(num < 0){
+            Toast.makeText(getContext(), "Số lượng phải lớn hơn hoặc bằng 0", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(p<=0){
+            Toast.makeText(getContext(), "Giá bán phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         return true;
     }
     private void getCategory(){
@@ -303,7 +308,16 @@ public class CRUDFragment extends Fragment {
             }
         });
     }
-    public void setProgressDialog() {
+    private  void clearEditText(){
+        txtTitle.setText("");
+        txtAuthor.setText("");
+        txtDes.setText("");
+        txtNum.setText("");
+        txtPrice.setText("");
+        txtYear.setText("");
+        img.setImageResource(R.drawable.ic_menu_gallery);
+    }
+    private void setProgressDialog() {
 
         int llPadding = 30;
         LinearLayout ll = new LinearLayout(getContext());

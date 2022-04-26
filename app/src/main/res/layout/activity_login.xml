@@ -23,7 +23,7 @@
             android:textSize="18sp"
             android:textColor="@color/text_second"
             android:fontFamily="@font/roboto_regular"
-            android:text="SĐT"
+            android:text="Số điện thoại"
             android:paddingLeft="3dp">
         </TextView>
 

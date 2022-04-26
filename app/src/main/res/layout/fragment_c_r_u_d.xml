@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/crud_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admin.CRUDFragment"
-    >
-    <!-- TODO: Update blank fragment layout -->
+    android:background="@color/background">
     <LinearLayout
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="@dimen/activity_vertical_margin"
-        android:layout_gravity="center"
-        android:background="@color/background">
+        android:layout_gravity="center">
         <EditText
-            android:layout_marginTop="60dp"
             android:id="@+id/crud_title"
             android:hint="Tên sách"
             android:paddingTop="5sp"
@@ -158,10 +157,6 @@
             android:textAllCaps="true"
             android:text="Thêm sách">
         </Button>
-        <ListView
-            android:id="@+id/crud_lv_book"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
     </LinearLayout>
 
 

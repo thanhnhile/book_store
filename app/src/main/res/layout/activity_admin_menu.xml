@@ -12,14 +12,15 @@
         android:id="@+id/admin_menu_container"
         android:layout_above="@id/admin_menu_nav">
     </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/admin_menu_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:itemTextColor="@color/text_second"
-        app:itemIconTint="@drawable/nav_item_color_state"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/admin_menu"/>
+        android:background="@color/white"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@color/text_second"
+        app:menu="@menu/admin_menu" />
 
 </RelativeLayout>

@@ -21,6 +21,7 @@ public class AdminMenuActivity extends AppCompatActivity {
     CRUDFragment crudFragment = new CRUDFragment();
     CategoryFragment categoryFragment = new CategoryFragment();
     OrderListFragment orderListFragment = new OrderListFragment();
+    AdminListbook adminListbook = new AdminListbook();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,9 @@ public class AdminMenuActivity extends AppCompatActivity {
                         return true;
                     case R.id.order:
                         getSupportFragmentManager().beginTransaction().replace(R.id.admin_menu_container,orderListFragment).commit();
+                        return true;
+                    case R.id.list_book:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.admin_menu_container,adminListbook).commit();
                         return true;
                 }
                 return false;

@@ -5,9 +5,5 @@
     android:layout_height="match_parent"
     tools:context=".BookListFragment"
     android:background="@color/background">
-<!--    <GridView-->
-<!--        android:id="@+id/gridview_book"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:numColumns="2"></GridView>-->
+
 </FrameLayout>

@@ -38,7 +38,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:enabled="true"
-        android:textAllCaps="true"
+        android:textAllCaps="false"
         android:layout_gravity="end"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:text="Thêm thể loại">

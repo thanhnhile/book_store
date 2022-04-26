@@ -20,4 +20,9 @@
         android:name="com.example.book_store.admin.CategoryFragment"
         android:label="fragment_category"
         tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/adminListbook"
+        android:name="com.example.book_store.admin.AdminListbook"
+        android:label="fragment_admin_listbook"
+        tools:layout="@layout/fragment_admin_listbook" />
 </navigation>

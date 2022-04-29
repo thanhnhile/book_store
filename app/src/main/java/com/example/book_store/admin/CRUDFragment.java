@@ -306,7 +306,7 @@ public class CRUDFragment extends Fragment {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         llParam.gravity = Gravity.CENTER;
         TextView tvText = new TextView(getContext());
-        tvText.setText("Loading ...");
+        tvText.setText("Đang tải ảnh lên...");
         tvText.setTextColor(Color.parseColor("#000000"));
         tvText.setTextSize(20);
         tvText.setLayoutParams(llParam);

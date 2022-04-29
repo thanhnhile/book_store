@@ -1,5 +1,6 @@
 package com.example.book_store.admin;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.graphics.Color;
 import android.net.Uri;
@@ -63,6 +64,7 @@ public class UpdateFragment extends Fragment {
     StorageReference storageReference;
     //Data biding
     EditText txtTitle, txtAuthor,txtYear,txtPrice,txtNum,txtDes;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch swActive;
     Spinner snCategory;
     Button btnUpdate,btnAddImg;
@@ -122,6 +124,8 @@ public class UpdateFragment extends Fragment {
             book.setId(bookId);
             getBookInfo();
         }
+        //Dialog
+        setProgressDialog();
         //handle event
         onGetImageClick();
         onUpdateClick();
@@ -166,6 +170,7 @@ public class UpdateFragment extends Fragment {
                                         //Add to DB
                                         if(book.getImgURL() != null){
                                             updateBook(book.getId(),title,author,category,imgURL,yearVal,priceVal,inStockVal,desc, finalIsActive);
+                                            dialog.dismiss();
                                         }
                                     }
                                 });
@@ -212,7 +217,7 @@ public class UpdateFragment extends Fragment {
                 }
                 else{
                     Toast.makeText(getContext(), "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
-                    //dialog.dismiss();
+
                 }
             }
         });
@@ -335,7 +340,7 @@ public class UpdateFragment extends Fragment {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         llParam.gravity = Gravity.CENTER;
         TextView tvText = new TextView(getContext());
-        tvText.setText("Loading ...");
+        tvText.setText("Đang tải ảnh lên...");
         tvText.setTextColor(Color.parseColor("#000000"));
         tvText.setTextSize(20);
         tvText.setLayoutParams(llParam);

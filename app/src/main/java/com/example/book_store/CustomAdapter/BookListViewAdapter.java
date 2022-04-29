@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.bumptech.glide.Glide;
 import com.example.book_store.R;
 import com.example.book_store.admin.CRUDFragment;
+import com.example.book_store.admin.UpdateFragment;
 import com.example.book_store.model.Book;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -120,12 +121,12 @@ public class BookListViewAdapter extends BaseAdapter {
         return view;
     }
     private void update(String id){
-        CRUDFragment crudFragment = new CRUDFragment();
+        UpdateFragment updateFragment = new UpdateFragment();
         Bundle bundle = new Bundle();
         bundle.putString("BOOK_ID",id);
-        crudFragment.setArguments(bundle);
+        updateFragment.setArguments(bundle);
         FragmentTransaction ft = this.fragmentManager.beginTransaction();
-        ft.replace(R.id.admin_list_book_container,crudFragment).addToBackStack(null).commit();
+        ft.replace(R.id.admin_list_book_container,updateFragment).addToBackStack(null).commit();
     }
 
 }

@@ -20,24 +20,5 @@ public class BookDao {
         myRef = database.getReference("Books");
         this.book = book;
     }
-    public void readData(){
-        myRef.child(book.getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if(task.isSuccessful()){
-                    if(task.getResult().exists()){
-                        DataSnapshot data = task.getResult();
-                        book = data.getValue(Book.class);
-                    }
-                }
-            }
-        });
-    }
-    public  void updataBook(Book book){
 
-    }
-    public void toggleActiveBook(Book book){
-
-
-    }
 }

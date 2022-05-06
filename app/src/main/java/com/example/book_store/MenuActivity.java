@@ -24,8 +24,6 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         initUI();
-        //Get user from Login
-        user = getIntent().getParcelableExtra(LoginActivity.USER_KEY);
 
     }
     private void initUI(){

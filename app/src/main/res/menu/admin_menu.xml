@@ -4,6 +4,11 @@
         android:title="@string/title_crud"
         android:icon="@drawable/ic_baseline_add_to_photos_24">
     </item>
+    <item
+        android:id="@+id/list_book"
+        android:title="@string/title_list"
+        android:icon="@drawable/ic_baseline_list">
+    </item>
     <item android:id="@+id/category"
         android:title="@string/title_category"
         android:icon="@drawable/ic_baseline_edit"></item>

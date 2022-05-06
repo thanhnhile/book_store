@@ -7,7 +7,7 @@
     android:layout_marginBottom="20dp">
     <ImageView
         android:id="@+id/lv_img"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
         android:layout_height="100dp"
         android:src="@drawable/book"
         android:layout_alignParentLeft="true"

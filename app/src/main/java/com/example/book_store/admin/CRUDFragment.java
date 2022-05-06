@@ -84,6 +84,8 @@ public class CRUDFragment extends Fragment {
     ActivityResultLauncher<String> getImage;
     //
     AlertDialog dialog;
+    //BookDao
+    BookDao dao;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -121,6 +123,8 @@ public class CRUDFragment extends Fragment {
                     }
                 }
         );
+        //
+        dao = new BookDao(getContext());
         //Fill data category
         categorys = new ArrayList<>();
         categoryAdapter = new ArrayAdapter(getContext(),R.layout.style_spinner,categorys);
@@ -185,7 +189,10 @@ public class CRUDFragment extends Fragment {
                                             book.setInStock(Integer.parseInt(inStock));
                                             book.setDescription(desc);
                                             book.setIsActive(finalIsActive);
-                                            addBookToFirebase(book);
+                                            if(dao.addBook(book)){
+                                                clearEditText();
+                                            }
+                                            dialog.dismiss();
                                         }
                                     }
                                 });
@@ -208,27 +215,6 @@ public class CRUDFragment extends Fragment {
                         Toast.makeText(getContext(), "Ảnh bìa không được để trống", Toast.LENGTH_SHORT).show();
                     }
 
-                }
-            }
-        });
-    }
-    private void addBookToFirebase(Book book){
-        myRef = database.getReference("Books");
-        //Add to DB
-        String id = myRef.push().getKey();
-        book.setId(id);
-        myRef.child(book.getId()).setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    dialog.dismiss();
-                    clearEditText();
-                    Toast.makeText(getContext(), "Thêm sách thành công", Toast.LENGTH_SHORT).show();
-                }
-
-                else {
-                    dialog.dismiss();
-                    Toast.makeText(getContext(), "Thêm sách thất bại", Toast.LENGTH_SHORT).show();
                 }
             }
         });

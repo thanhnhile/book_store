@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.book_store.R;
+import com.example.book_store.dao.BookDao;
 import com.example.book_store.model.Book;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -77,6 +78,8 @@ public class UpdateFragment extends Fragment {
     ActivityResultLauncher<String> getImage;
     //
     AlertDialog dialog;
+    //
+    BookDao dao;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -110,6 +113,8 @@ public class UpdateFragment extends Fragment {
                     }
                 }
         );
+        //Book DAO
+        dao = new BookDao(getContext());
         //btn update
         btnUpdate = (Button) view.findViewById(R.id.crud_btn_update);
         //Fill data category
@@ -169,7 +174,9 @@ public class UpdateFragment extends Fragment {
                                         book.setImgURL(imgURL);
                                         //Add to DB
                                         if(book.getImgURL() != null){
-                                            updateBook(book.getId(),title,author,category,imgURL,yearVal,priceVal,inStockVal,desc, finalIsActive);
+                                            if(dao.updateBook(book.getId(),title,author,category,imgURL,yearVal,priceVal,inStockVal,desc, finalIsActive)){
+                                                getBookInfo();
+                                            }
                                             dialog.dismiss();
                                         }
                                     }
@@ -187,38 +194,12 @@ public class UpdateFragment extends Fragment {
                             }
                         });
                     } else{
-                        updateBook(book.getId(),title,author,category,book.getImgURL(),yearVal,priceVal,inStockVal,desc, isActive);
+                        if(dao.updateBook(book.getId(),title,author,category,book.getImgURL(),yearVal,priceVal,inStockVal,desc, isActive)){
+                            getBookInfo();
+                        }
                     }
                 }
 
-            }
-        });
-    }
-    private void updateBook(String id,String title,String author,String category,String imgURL,int year,int price,int inStock,String desc,int isActive){
-        HashMap Book = new HashMap();
-        Book.put("id",id);
-        Book.put("title", title);
-        Book.put("author",author);
-        Book.put("category",category);
-        Book.put("price",price);
-        Book.put("year",year);
-        Book.put("inStock",inStock);
-        Book.put("description",desc);
-        Book.put("imgURL",imgURL);
-        Book.put("isActive",isActive);
-        myRef = database.getReference("Books");
-        myRef.child(book.getId()).updateChildren(Book).addOnCompleteListener(new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-                    clearEditText();
-                    getBookInfo();
-                }
-                else{
-                    Toast.makeText(getContext(), "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
-
-                }
             }
         });
     }

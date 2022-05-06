@@ -32,6 +32,7 @@ public class AdminListbook extends Fragment {
     ListView listView;
     ArrayList<Book> listBook;
     BookListViewAdapter adapter;
+    FragmentManager fragmentManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,7 +41,10 @@ public class AdminListbook extends Fragment {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("Books");
         listView = (ListView) view.findViewById(R.id.admin_lv);
+        fragmentManager = getParentFragmentManager();
         listBook = new ArrayList<>();
+        adapter = new BookListViewAdapter(getContext(),listBook,fragmentManager);
+        listView.setAdapter(adapter);
         getData();
         return view;
     }
@@ -55,9 +59,7 @@ public class AdminListbook extends Fragment {
                     Book book = data.getValue(Book.class);
                     listBook.add(book);
                 }
-                FragmentManager fragmentManager = getParentFragmentManager();
-                adapter = new BookListViewAdapter(getContext(),listBook,fragmentManager);
-                listView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override

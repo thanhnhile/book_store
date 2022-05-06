@@ -3,7 +3,9 @@ package com.example.book_store;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtPhone,txtPass;
     Button btnLogin, btnRegister;
     private User user;
-    public static final String USER_KEY = "current user";
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,17 +51,18 @@ public class LoginActivity extends AppCompatActivity {
                                 final User user = snapshot.child(phone).getValue(User.class);
                                 if(user.getPassword().equals(pass)){
                                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    writeToSharedPreferences(user);
                                     //is admin
                                     if(user.getIsAdmin() == 1){
                                         Intent adminMenu = new Intent(getApplicationContext(), AdminMenuActivity.class);
-                                        adminMenu.putExtra(USER_KEY,user);
+                                        //adminMenu.putExtra(USER_KEY,user);
                                         startActivity(adminMenu);
                                     }
                                     else{
                                         //Main menu Activity
                                         //Gui user
                                         Intent menu = new Intent(getApplicationContext(),MenuActivity.class);
-                                        menu.putExtra(USER_KEY,user);
+                                        //menu.putExtra(USER_KEY,user);
                                         startActivity(menu);
                                     }
 
@@ -88,6 +91,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private void writeToSharedPreferences(User user){
+        sharedPreferences = getSharedPreferences("book_store", Context.MODE_PRIVATE);
+        SharedPreferences.Editor  editor = sharedPreferences.edit();
+        String phone = user.getPhone();
+        int isAdmin = user.getIsAdmin();
+        editor.putString("phone",phone);
+        editor.putInt("isAdmin",isAdmin);
+        editor.commit();
     }
     private void changeToRegisterActivity(){
         Intent intent = new Intent(getApplicationContext(),SignupActivity.class);

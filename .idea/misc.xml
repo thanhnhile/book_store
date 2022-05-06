@@ -38,10 +38,13 @@
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/content_account.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_book_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_cart.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_check_out.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_checkout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_infor.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_order_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_show_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_update_infor.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/viewholder_cart.xml" value="0.264" />
       </map>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowDetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mắt biếc"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:layout_marginTop="60dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/priceTxt"
+                android:textColor="@color/text_second"
+                android:text="100.000 VND"
+                android:textSize="24sp"
+                android:textAlignment="center"/>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/book" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <Button
+                        android:id="@+id/btngiamsoluong"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@color/primary_color"
+                        android:text="-"
+                        android:textSize="25sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgsanpham"
+                        app:layout_constraintStart_toEndOf="@+id/imgsanpham" />
+                    <TextView
+                        android:id="@+id/txtsoluong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="8dp"
+                        android:text="1"
+                        android:textColor="@color/text_second"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/btngiamsoluong"
+                        app:layout_constraintStart_toEndOf="@+id/btngiamsoluong"
+                        app:layout_constraintTop_toTopOf="@+id/btngiamsoluong" />
+                    <Button
+                        android:id="@+id/btntangsoloung"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="9dp"
+                        android:background="@color/primary_color"
+                        android:text="+"
+                        android:textSize="25sp"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/btngiamsoluong"
+                        app:layout_constraintStart_toEndOf="@+id/txtsoluong"
+                        app:layout_constraintTop_toTopOf="@+id/btngiamsoluong" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NỘI DUNG"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_second"
+                android:layout_margin="16dp" />
+            <TextView
+                android:id="@+id/descriptionTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Một tác phẩm được nhiều người bình chọn là hay nhất của nhà văn này."
+                android:textSize="18sp"
+                android:textColor="@color/text_second"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="THÔNG TIN CHI TIẾT"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_second"
+                android:layout_margin="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="#DDDDDD">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tác giả"
+                    android:textSize="19sp"
+                    android:textColor="@color/text_second"/>
+
+                <TextView
+                    android:id="@+id/detail_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nguyễn Nhật Ánh"
+                    android:textSize="19sp"
+                    android:gravity="center"
+                    android:textColor="@color/text_second" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Năm xuất bản"
+                    android:textSize="19sp"
+                    android:textColor="@color/text_second"/>
+
+                <TextView
+                    android:id="@+id/detail_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2015"
+                    android:textSize="19sp"
+                    android:textColor="@color/text_second" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:background="#DDDDDD">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Thể loại"
+                    android:textSize="19sp"
+                    android:textColor="@color/text_second"/>
+
+                <TextView
+                    android:id="@+id/detail_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tỉnh cảm"
+                    android:gravity="center"
+                    android:textSize="19sp"
+                    android:textColor="@color/text_second" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/detail_btnAddToCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_color"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:enabled="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Thêm vào giỏ hàng">
+            </Button>
+            <Button
+                android:id="@+id/detail_btnBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:enabled="true"
+                android:layout_margin="10dp"
+                android:text="Trở lại">
+            </Button>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

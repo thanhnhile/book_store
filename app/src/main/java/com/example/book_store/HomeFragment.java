@@ -3,62 +3,90 @@ package com.example.book_store;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
+import android.os.PerformanceHintManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.book_store.customadapter.PhotoAdapter;
+import com.example.book_store.model.Photo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
+
+
 public class HomeFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Home.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    ViewPager viewPager;
+    CircleIndicator circleIndicator;
+    private List<Photo> mListPhoto;
+    private final static int timeDelay = 5000;
+    private Handler mHandler = new Handler();
+    private Runnable mRunable = new Runnable() {
+        @Override
+        public void run() {
+            if(viewPager.getCurrentItem() == mListPhoto.size() - 1){
+                viewPager.setCurrentItem(0);
+            }else{
+                viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+            }
         }
-    }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+       View view = inflater.inflate(R.layout.fragment_home, container, false);
+       viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+       circleIndicator = view.findViewById(R.id.circle_indicator);
+       mListPhoto = getListPhotos();
+       PhotoAdapter photoAdapter = new PhotoAdapter(mListPhoto);
+       viewPager.setAdapter(photoAdapter);
+
+       circleIndicator.setViewPager(viewPager);
+       mHandler.postDelayed(mRunable,timeDelay);
+       viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+           @Override
+           public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+           }
+
+           @Override
+           public void onPageSelected(int position) {
+               mHandler.removeCallbacks(mRunable);
+               mHandler.postDelayed(mRunable,timeDelay);
+           }
+
+           @Override
+           public void onPageScrollStateChanged(int state) {
+
+           }
+       });
+       return  view;
+    }
+    private List<Photo> getListPhotos(){
+        List<Photo> list = new ArrayList<>();
+        list.add(new Photo(R.drawable.img1));
+        list.add(new Photo(R.drawable.img2));
+        list.add(new Photo(R.drawable.img3));
+        list.add(new Photo(R.drawable.img4));
+        return list;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mHandler.removeCallbacks(mRunable);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mHandler.postDelayed(mRunable,timeDelay);
     }
 }

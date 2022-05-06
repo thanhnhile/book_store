@@ -1,12 +1,10 @@
-package com.example.book_store.CustomAdapter;
+package com.example.book_store.customadapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.book_store.R;
 import com.example.book_store.model.Book;

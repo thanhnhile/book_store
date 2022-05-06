@@ -3,115 +3,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment"
     android:background="@color/background">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_service"
-            android:textAllCaps="true"
-            android:textSize="16sp"
-            android:layout_marginBottom="15dp"></TextView>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--Slider-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
+            android:orientation="vertical"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white">
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/circle_indicator"
+                android:layout_height="46dp"
+                app:ci_gravity="center_horizontal"
+                android:layout_width="wrap_content">
+            </me.relex.circleindicator.CircleIndicator>
+            </androidx.viewpager.widget.ViewPager>
+        </LinearLayout>
+        <!--Gioi thieu dich vu-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:gravity="center">
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginRight="35dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/circle"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_outline_local_shipping_24"></ImageView>
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_marginTop="4dp"
-                    android:textSize="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Free Shipping\ntrên 250.000d"></TextView>
-            </LinearLayout>
+                android:text="@string/title_service"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:layout_marginBottom="15dp"></TextView>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginRight="35dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/circle"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_outline_sentiment_very_satisfied_24"></ImageView>
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_marginTop="4dp"
-                    android:textSize="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sách chính hãng"></TextView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginRight="35dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/circle"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_outline_attach_money_24"></ImageView>
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_marginTop="4dp"
-                    android:textSize="10sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ship COD toàn\nquốc"></TextView>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
                 android:gravity="center">
-                <ImageView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/circle"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_baseline_change_circle_24"></ImageView>
-                <TextView
-                    android:textAlignment="center"
-                    android:layout_marginTop="4dp"
-                    android:textSize="10sp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginRight="35dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circle"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_outline_local_shipping_24"></ImageView>
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_marginTop="4dp"
+                        android:textSize="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Free Shipping\ntrên 250.000d"></TextView>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đổi trả trong\n7 ngày"></TextView>
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginRight="35dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circle"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_outline_sentiment_very_satisfied_24"></ImageView>
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_marginTop="4dp"
+                        android:textSize="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sách\n chính hãng"></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginRight="35dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circle"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_outline_attach_money_24"></ImageView>
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_marginTop="4dp"
+                        android:textSize="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ship COD toàn\nquốc"></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circle"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_baseline_change_circle_24"></ImageView>
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_marginTop="4dp"
+                        android:textSize="10sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đổi trả trong\n7 ngày"></TextView>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 
 
 </ScrollView>

@@ -27,7 +27,7 @@
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/font/robonto.xml" value="0.234375" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/font/roboto.xml" value="0.234375" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/font/roboto_light.xml" value="0.234375" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_admin_menu.xml" value="0.33" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_admin_menu.xml" value="0.3969571230982019" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_menu.xml" value="0.18" />
@@ -42,12 +42,13 @@
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_cart.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_category.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_check_out.xml" value="0.25" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_infor.xml" value="0.18854166666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_order_list.xml" value="0.159375" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_search.xml" value="0.18" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_update.xml" value="0.18854166666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_update_infor.xml" value="0.20416666666666666" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/item_photo.xml" value="0.20416666666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/style_spinner.xml" value="0.33" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/viewholder_cart.xml" value="0.18" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/menu/account.xml" value="0.20416666666666666" />
@@ -68,7 +69,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.5" />
+        <option name="scale" value="0.33" />
       </ProjectState>
     </option>
   </component>

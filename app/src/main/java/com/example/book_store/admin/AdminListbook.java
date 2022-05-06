@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.example.book_store.CustomAdapter.BookListViewAdapter;
+import com.example.book_store.customadapter.BookListViewAdapter;
 import com.example.book_store.R;
 import com.example.book_store.model.Book;
 import com.google.firebase.database.DataSnapshot;

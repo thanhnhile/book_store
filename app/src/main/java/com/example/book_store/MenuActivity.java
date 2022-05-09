@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.book_store.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,7 +19,7 @@ public class MenuActivity extends AppCompatActivity {
     SearchFragment searchFragment = new SearchFragment();
     CartFragment cartFragment = new CartFragment();
     AccountFragment accountFragment = new AccountFragment();
-
+    TextView btnAcc;
     private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,15 @@ public class MenuActivity extends AppCompatActivity {
                     case R.id.cart:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,cartFragment).commit();
                         return true;
-                    case R.id.account:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,accountFragment).commit();
-                        return true;
                 }
                 return false;
+            }
+        });
+        btnAcc = (TextView) findViewById(R.id.menu_btnAccount);
+        btnAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.container,accountFragment).commit();
             }
         });
     }

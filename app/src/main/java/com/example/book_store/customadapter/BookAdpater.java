@@ -1,60 +1,70 @@
 package com.example.book_store.customadapter;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.example.book_store.R;
 import com.example.book_store.model.Book;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class BookAdpater extends BaseAdapter {
-    private Context context;
-    LayoutInflater inflater = null;
-//    ArrayList<Book> list;
-//    {
-//        list = new ArrayList<>();
-//    }
+public class BookAdpater extends  RecyclerView.Adapter<BookAdpater.BookViewHolder> {
+    Context context;
+    private List<Book> mList;
 
-    public BookAdpater(Context context,ArrayList<Book> list) {
+    public BookAdpater(Context context) {
         this.context = context;
-        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        this.list = list;
+    }
+
+    public  void setData(List<Book> list){
+        this.mList = list;
+        notifyDataSetChanged();
+    }
+    @NonNull
+    @Override
+    public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_layout,parent,false);
+        return new BookViewHolder(view);
     }
 
     @Override
-    public int getCount() {
-        //return list.size();
-        return 1;
+    public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
+        Book book = mList.get(position);
+        if(book == null)
+            return;
+        holder.bookTitle.setText(book.getTitle());
+        String price = Integer.toString(book.getPrice());
+        holder.bookPrice.setText(price);
+        Glide.with(context).load(book.getImgURL()).into(holder.bookImg);
     }
 
     @Override
-    public Object getItem(int i) {
-        //return list.get(i);
-        return null;
+    public int getItemCount() {
+        if(mList != null)
+            return mList.size();
+        return 0;
     }
 
-    @Override
-    public long getItemId(int i) {
-        return i;
-    }
-
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        if(view == null){
-            view = inflater.inflate(R.layout.book_layout, viewGroup, false);
+    public class BookViewHolder extends RecyclerView.ViewHolder{
+        private ImageView bookImg;
+        private TextView bookTitle;
+        private TextView bookPrice;
+        public BookViewHolder(@NonNull View itemView) {
+            super(itemView);
+            bookImg = itemView.findViewById(R.id.book_img);
+            bookTitle = itemView.findViewById(R.id.book_title);
+            bookPrice = itemView.findViewById(R.id.book_price);
         }
-//        Book book = list.get(i);
-//        ImageView img = view.findViewById(R.id.book_img);
-//        TextView title = view.findViewById(R.id.book_title);
-//        TextView price = view.findViewById(R.id.book_price);
-//        img.setImageResource(book.getImg());
-//        title.setText(book.getTitle());
-//        String bookPrice = Integer.toString(book.getPrice());
-//        price.setText(bookPrice);
-        return view;
     }
 }

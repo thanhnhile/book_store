@@ -27,6 +27,7 @@
             android:layout_alignParentLeft="true"></TextView>
 
         <TextView
+            android:id="@+id/admin_menu_btnAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

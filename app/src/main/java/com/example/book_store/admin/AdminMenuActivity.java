@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import com.example.book_store.AccountFragment;
 import com.example.book_store.R;
 import com.example.book_store.admin.CRUDFragment;
 import com.example.book_store.admin.CategoryFragment;
@@ -23,6 +26,7 @@ public class AdminMenuActivity extends AppCompatActivity {
     OrderListFragment orderListFragment = new OrderListFragment();
     AdminListbook adminListbook = new AdminListbook();
     UserListFragment userListFragment = new UserListFragment();
+    TextView btnAcc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,14 @@ public class AdminMenuActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+        btnAcc = (TextView) findViewById(R.id.admin_menu_btnAccount);
+        btnAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AccountFragment accountFragment = new AccountFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.admin_menu_container,accountFragment).commit();
             }
         });
 

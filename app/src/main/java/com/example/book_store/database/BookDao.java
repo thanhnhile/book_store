@@ -1,15 +1,13 @@
-package com.example.book_store.dao;
+package com.example.book_store.database;
 
 import android.content.Context;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.book_store.MainActivity;
 import com.example.book_store.model.Book;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

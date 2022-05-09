@@ -31,12 +31,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.book_store.R;
-import com.example.book_store.dao.BookDao;
+import com.example.book_store.database.BookDao;
 import com.example.book_store.model.Book;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +49,6 @@ import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
 
 

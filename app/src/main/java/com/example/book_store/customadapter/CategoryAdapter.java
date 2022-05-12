@@ -9,21 +9,24 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.book_store.R;
 import com.example.book_store.model.Category;
+import com.example.book_store.ui.GridSpacingItemDecoration;
 
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
     Context context;
     List<Category> mList;
-
-    public CategoryAdapter(Context context) {
+    FragmentManager fragmentManager;
+    public CategoryAdapter(Context context,FragmentManager fragmentManager) {
         this.context = context;
+        this.fragmentManager = fragmentManager;
     }
     public void setData(List<Category> list){
         this.mList = list;
@@ -41,22 +44,26 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         Category category = mList.get(position);
         if(category == null)
             return;
-        holder.txtName.setText(category.getCategory());
-        //Xu ly khi click vao xem toan bo sach thuoc category nay
-        holder.txtViewAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if(category.getCategory() != null){
+            holder.txtName.setText(category.getCategory());
+            //Xu ly khi click vao xem toan bo sach thuoc category nay
+            holder.txtViewAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-            }
-        });
+                }
+            });
+        }
+        else{
+            holder.txtName.setText("Kết quả tìm kiếm");
+            holder.txtViewAll.setVisibility(View.INVISIBLE);
+        }
         //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context,2,LinearLayoutManager.VERTICAL,false);
-        int spanCount = 2; // 3 columns
-        int spacing = 20; // 50px
-        boolean includeEdge = false;
-        holder.rvBook.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
+        //int spacingInPixels = 25;
+        //holder.rvBook.addItemDecoration(new com.example.book_store.ui.GridSpacingItemDecoration(2, spacingInPixels, false, 0));
         holder.rvBook.setLayoutManager(gridLayoutManager);
-        BookAdpater bookAdpater = new BookAdpater(context);
+        BookAdpater bookAdpater = new BookAdpater(context,this.fragmentManager);
         bookAdpater.setData(category.getList());
         holder.rvBook.setAdapter(bookAdpater);
     }

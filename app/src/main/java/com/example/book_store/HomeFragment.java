@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -104,7 +106,8 @@ public class HomeFragment extends Fragment {
         mainRecyclerView = view.findViewById(R.id.main_recycleView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         mainRecyclerView.setLayoutManager(linearLayoutManager);
-        categoryAdapter = new CategoryAdapter(getContext());
+        FragmentManager fragmentManager = getParentFragmentManager();
+        categoryAdapter = new CategoryAdapter(getContext(),fragmentManager);
         mainRecyclerView.setAdapter(categoryAdapter);
         bookList = new ArrayList<>();
         listCates = new ArrayList<>();
@@ -119,65 +122,129 @@ public class HomeFragment extends Fragment {
         list.add(new Photo(R.drawable.img4));
         return list;
     }
+//    private void test(){
+//        bookList.add(new Book("1","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
+//                1,1,1,"a",1));
+//        bookList.add(new Book("2","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
+//                1,1,1,"a",1));
+//        bookList.add(new Book("3","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
+//                1,1,1,"a",1));
+//        bookList.add(new Book("4","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
+//                1,1,1,"a",1));
+//        if(listCates != null){
+//            for (String category:listCates){
+//                mListCategorys.add(new Category(category,bookList));
+//                categoryAdapter.setData(mListCategorys);
+//            }
+//        }else Log.e("categorys","null");
+//
+//    }
     //get list books by category
     private void getListCategorys(){
+        CountDownLatch done = new CountDownLatch(1);
         myRef = database.getReference("Categorys");
-        getData(myRef, new OnGetDataListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onSuccess(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    String cate = snapshot.getValue(String.class);
-                    getListBooks(cate);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    String cate = dataSnapshot.getValue(String.class);
+                    listCates.add(cate);
                 }
+                done.countDown();
+                try {
+                    done.await(); //it will wait till the response is received from firebase.
+                    getListBooks();
+                } catch(InterruptedException e) {
+                    e.printStackTrace();
+                }
+                //getListBooks();
             }
 
             @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onFailure() {
-
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Get Categorys errors",error.getMessage());
             }
         });
     }
-    private void getListBooks(String category){
-        Log.e("So lan chay ham","Chay ham get List book");
-        Query query = database.getReference("Books").orderByChild("category").equalTo(category).limitToLast(4);
-        readData(query, new OnGetDataListener() {
-            @Override
-            public void onSuccess(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for(DataSnapshot data:dataSnapshot.getChildren()){
-                        Book book = data.getValue(Book.class);
-                        bookList.add(book);
+    private void getListBooks(){
+        for (String category:listCates){
+            Log.e("category",category);
+            Query query = database.getReference("Books")
+                    .orderByChild("category").equalTo(category)
+                    .limitToFirst(4);
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(bookList != null){
+                        bookList.clear();
                     }
-                    Category e = new Category(category,bookList);
-                    mListCategorys.add(e);
-                    categoryAdapter.setData(mListCategorys);
+                    if(snapshot.exists()) {
+                        CountDownLatch done = new CountDownLatch(2);
+                        for (DataSnapshot data : snapshot.getChildren()) {
+                            Book book = data.getValue(Book.class);
+                            if(book.getIsActive() == 1){
+                                bookList.add(book);
+                            }
+                        }
+                        done.countDown();
+                        Category cate = new Category(category,bookList);
+                        mListCategorys.add(cate);
+                        categoryAdapter.setData(mListCategorys);
+                        done.countDown();
+                        try {
+                            done.await(); //it will wait till the response is received from firebase.
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Log.e("Chay vao day", Integer.toString(bookList.size()));
+                    }
 
                 }
-            }
 
-            @Override
-            public void onStart() {
-                //when starting
-                Log.d("ONSTART", "Started");
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.e("Get boooks errors",error.getMessage());
+                }
+            });
 
-            @Override
-            public void onFailure() {
-                Log.d("onFailure", "Failed");
-            }
-        });
+        }
     }
+//    private void getListBooks(String category){
+//        Log.e("So lan chay ham","Chay ham get List book");
+//        Query query = database.getReference("Books").orderByChild("category").equalTo(category).limitToLast(4);
+//        readData(query, new OnGetDataListener() {
+//            @Override
+//            public void onSuccess(DataSnapshot dataSnapshot) {
+//                if(dataSnapshot.exists()){
+//                    for(DataSnapshot data:dataSnapshot.getChildren()){
+//                        Book book = data.getValue(Book.class);
+//                        bookList.add(book);
+//                    }
+//                    Category e = new Category(category,bookList);
+//                    mListCategorys.add(e);
+//                    categoryAdapter.setData(mListCategorys);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onStart() {
+//                //when starting
+//                Log.d("ONSTART", "Started");
+//            }
+//
+//            @Override
+//            public void onFailure() {
+//                Log.d("onFailure", "Failed");
+//            }
+//        });
+//    }
     public void readData(Query ref, final OnGetDataListener listener) {
         listener.onStart();
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listener.onSuccess(snapshot);
+                listener.onSuccess((snapshot));
             }
 
             @Override

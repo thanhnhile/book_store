@@ -2,86 +2,105 @@ package com.example.book_store;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
+import com.example.book_store.customadapter.CategoryAdapter;
 import com.example.book_store.model.Book;
+import com.example.book_store.model.Category;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SearchFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public SearchFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
-        SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-    GridView gridView;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    List<Category> mListCategorys;
+    List<Book> listBooks;
+    CategoryAdapter categoryAdapter;
+    SearchView searchView;
+    RecyclerView mainRecyclerView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
-        gridView = (GridView) rootView.findViewById(R.id.gridview_book);
-//        ArrayList<Book> list = new ArrayList<>();
-//        list.add(new Book(1,"aaa",550500,R.drawable.book));
-//        list.add(new Book(2,"aaanfnkkkmkmkmkmkmkmkmkmkmkmkkkkkkkkkkkkkkkkkkkkkkkkkkkk",500,R.drawable.book));
-//        list.add(new Book(3,"aaabbb",500,R.drawable.book));
-//        BookAdpater adpater = new BookAdpater(getContext(),list);
-//        gridView.setAdapter(adpater);
+        //Firebase
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Books");
+        mListCategorys = new ArrayList<Category>();
+        listBooks = new ArrayList<>();
+        searchView = rootView.findViewById(R.id.search);
+        mainRecyclerView = (RecyclerView) rootView.findViewById(R.id.main_recycleView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
+        mainRecyclerView.setLayoutManager(linearLayoutManager);
+        FragmentManager fragmentManager = getParentFragmentManager();
+        categoryAdapter = new CategoryAdapter(getContext(),fragmentManager);
+        mainRecyclerView.setAdapter(categoryAdapter);
+        handleSearch();
         return rootView;
     }
+    private void queryDB(String search){
+        Query query = database.getReference("Books")
+                .orderByChild("title").startAt(search);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(listBooks != null){
+                    listBooks.clear();
+                }
+                if(mListCategorys != null){
+                    mListCategorys.clear();
+                }
+                if(snapshot.exists()){
+                    for (DataSnapshot data:snapshot.getChildren()){
+                        Book b = data.getValue(Book.class);
+                        if(b.getIsActive() == 1)
+                            listBooks.add(b);
+                    }
+                    mListCategorys.add(new Category(null,listBooks));
+                    categoryAdapter.setData(mListCategorys);
+                }
+            }
 
-//    @Override
-//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        menu.clear();
-//        inflater.inflate(R.menu.menu_bottom_nav,menu);
-//        MenuItem searchItem = menu.findItem(R.id.search);
-//        SearchView searchView = new SearchView((MainActivity.this).getSupportActionBar().getThemedContext());
-//    }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void handleSearch(){
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                queryDB(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+    }
+
+
 }

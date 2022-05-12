@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SearchFragment"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/storke"
+        android:queryHint="Tìm kiếm"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null"
+        app:searchIcon="@drawable/ic_search"
+        app:submitBackground="@null"></SearchView>
+    <!--Dyamic List-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/search"
+        android:id="@+id/main_recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="20dp"
-        android:paddingBottom="30dp"
-        android:paddingRight="15dp"
-        android:paddingLeft="15dp">
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/storke"
-            app:iconifiedByDefault="false"
-            app:queryBackground="@null"
-            app:searchIcon="@drawable/ic_search"
-            app:submitBackground="@null"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            />
-        <FrameLayout
-            android:id="@+id/book_container"
-            android:layout_below="@+id/search"
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <GridView
-                android:id="@+id/gridview_book"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:numColumns="2"
-                android:stretchMode="columnWidth"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"></GridView>
-        </FrameLayout>
-    </RelativeLayout>
-</FrameLayout>
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"></androidx.recyclerview.widget.RecyclerView>
+    <!--Dyamic List-->
+</RelativeLayout>

@@ -1,6 +1,9 @@
 package com.example.book_store.model;
 
-public class Book {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Book implements Parcelable {
     private String id;
     private String title;
     private String author;
@@ -29,6 +32,46 @@ public class Book {
 
     }
 
+    protected Book(Parcel in) {
+        id = in.readString();
+        title = in.readString();
+        author = in.readString();
+        category = in.readString();
+        imgURL = in.readString();
+        year = in.readInt();
+        price = in.readInt();
+        inStock = in.readInt();
+        description = in.readString();
+        isActive = in.readInt();
+    }
+
+    public static final Creator<Book> CREATOR = new Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel in) {
+            return new Book(in);
+        }
+
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", category='" + category + '\'' +
+                ", imgURL='" + imgURL + '\'' +
+                ", year=" + year +
+                ", price=" + price +
+                ", inStock=" + inStock +
+                ", description='" + description + '\'' +
+                ", isActive=" + isActive +
+                '}';
+    }
 
     public int getInStock() {
         return inStock;
@@ -108,5 +151,24 @@ public class Book {
 
     public void setIsActive(int isActive) {
         this.isActive = isActive;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id);
+        parcel.writeString(title);
+        parcel.writeString(author);
+        parcel.writeString(category);
+        parcel.writeString(imgURL);
+        parcel.writeInt(year);
+        parcel.writeInt(price);
+        parcel.writeInt(inStock);
+        parcel.writeString(description);
+        parcel.writeInt(isActive);
     }
 }

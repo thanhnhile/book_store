@@ -46,8 +46,8 @@
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_infor.xml" value="0.18854166666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_order_list.xml" value="0.159375" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_search.xml" value="0.18" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_show_detail.xml" value="0.22" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_search.xml" value="0.3533980582524272" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_show_detail.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_update.xml" value="0.18854166666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_update_infor.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_user_list.xml" value="0.18425925925925926" />
@@ -68,12 +68,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.18" />
-      </ProjectState>
-    </option>
   </component>
 </project>

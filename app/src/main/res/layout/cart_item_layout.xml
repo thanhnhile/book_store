@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:layout_marginBottom="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/lv_img"
+            android:layout_width="90dp"
+            android:layout_height="120dp"
+            android:src="@drawable/book"
+            android:layout_marginRight="20dp"
+            android:scaleType="fitCenter">
+        </ImageView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+            <LinearLayout
+                android:id="@+id/cart_detail"
+                android:layout_width="wrap_content"
+                android:minWidth="210dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentLeft="true"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/lv_txt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="2"
+                    android:minHeight="35dp"
+                    android:text="Mắt biếc"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"></TextView>
+
+                <TextView
+                    android:id="@+id/lv_txt_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Nguyễn Nhật Ánh"></TextView>
+
+                <TextView
+                    android:id="@+id/lv_txt_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50.000"
+                    android:textColor="@color/red"
+                    android:textSize="16sp"></TextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btngiamsoluong"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@color/primary_color"
+                        android:gravity="center"
+                        android:text="-"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"></Button>
+
+                    <TextView
+                        android:id="@+id/txtsoluong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="8dp"
+                        android:text="1"
+                        android:textColor="@color/text_second"
+                        android:textSize="18sp"
+                        android:textStyle="bold"></TextView>
+
+                    <Button
+                        android:id="@+id/btntangsoloung"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="9dp"
+                        android:background="@color/primary_color"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"></Button>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+                <ImageButton
+                    android:id="@+id/btnRemove"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/red_button"
+                    android:src="@drawable/ic_outline_close_24"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"></ImageButton>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

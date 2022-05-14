@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.book_store.sharedpreferences.Constants;
+import com.example.book_store.sharedpreferences.PreferenceManager;
+
 
 public class AccountFragment extends Fragment {
 
@@ -31,11 +34,13 @@ public class AccountFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("book_store",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("phone");
-                editor.remove("isAdmin");
-                editor.commit();
+//                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("book_store",Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor = sharedPreferences.edit();
+//                editor.remove("phone");
+//                editor.remove("isAdmin");
+//                editor.commit();
+                PreferenceManager preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
+                preferenceManager.clear();
                 Intent intent = new Intent(getContext(),LoginActivity.class);
                 startActivity(intent);
             }

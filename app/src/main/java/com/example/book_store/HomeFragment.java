@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
     //list books by categiry
     List<Category> mListCategorys;
     List<String> listCates;
-    List<Book> bookList;
+    //List<Book> bookList;
     String currentCate;
     ViewPager viewPager;
     CircleIndicator circleIndicator;
@@ -109,7 +109,6 @@ public class HomeFragment extends Fragment {
         FragmentManager fragmentManager = getParentFragmentManager();
         categoryAdapter = new CategoryAdapter(getContext(),fragmentManager);
         mainRecyclerView.setAdapter(categoryAdapter);
-        bookList = new ArrayList<>();
         listCates = new ArrayList<>();
         getListCategorys();
         return view;
@@ -175,9 +174,7 @@ public class HomeFragment extends Fragment {
             query.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(bookList != null){
-                        bookList.clear();
-                    }
+                    List bookList = new ArrayList<>();
                     if(snapshot.exists()) {
                         CountDownLatch done = new CountDownLatch(2);
                         for (DataSnapshot data : snapshot.getChildren()) {

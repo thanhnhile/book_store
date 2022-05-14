@@ -15,6 +15,7 @@
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_outline_attach_money_24.xml" value="0.18" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_outline_close_24.xml" value="0.1865" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_outline_local_shipping_24.xml" value="0.1" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_outline_sentiment_very_satisfied_24.xml" value="0.151" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_search.xml" value="0.1795" />
@@ -34,6 +35,7 @@
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/book_layout.xml" value="0.15" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/book_listview_layout.xml" value="0.5" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/cart_item_layout.xml" value="0.5" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/category_listbook.xml" value="0.23374827109266944" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_account.xml" value="0.22" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_admin_listbook.xml" value="0.20416666666666666" />
@@ -68,5 +70,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
   </component>
 </project>

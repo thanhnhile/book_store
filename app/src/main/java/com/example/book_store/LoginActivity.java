@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.book_store.admin.AdminMenuActivity;
 import com.example.book_store.model.User;
+import com.example.book_store.sharedpreferences.Constants;
+import com.example.book_store.sharedpreferences.PreferenceManager;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -93,13 +95,16 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void writeToSharedPreferences(User user){
-        sharedPreferences = getSharedPreferences("book_store", Context.MODE_PRIVATE);
-        SharedPreferences.Editor  editor = sharedPreferences.edit();
+        PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
+//        sharedPreferences = getSharedPreferences("book_store", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor  editor = sharedPreferences.edit();
         String phone = user.getPhone();
         int isAdmin = user.getIsAdmin();
-        editor.putString("phone",phone);
-        editor.putInt("isAdmin",isAdmin);
-        editor.commit();
+        preferenceManager.putString(Constants.LOGIN_PHONE,phone);
+        preferenceManager.putInt(Constants.LOGIN_IS_ADMIN,isAdmin);
+//        editor.putString("phone",phone);
+//        editor.putInt("isAdmin",isAdmin);
+//        editor.commit();
     }
     private void changeToRegisterActivity(){
         Intent intent = new Intent(getApplicationContext(),SignupActivity.class);

@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.ea.async.Async;
 import com.example.book_store.admin.AdminMenuActivity;
 import com.example.book_store.sharedpreferences.Constants;
 import com.example.book_store.sharedpreferences.PreferenceManager;

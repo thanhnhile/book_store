@@ -54,17 +54,17 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/account_txtUserName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tran Huu Khanh Vy"
+                    android:text=""
                     android:textColor="@color/text_second"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/account_txtUserPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="0961516234"

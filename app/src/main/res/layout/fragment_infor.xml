@@ -62,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:hint="Tran Huu Khanh Vy"
+                        android:hint=""
                         android:textColor="@color/text_second"
                         android:textSize="16sp"
                         android:enabled="false"></EditText>
@@ -83,7 +83,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:hint="0961516234"
+                        android:hint=""
                         android:textColor="@color/text_second"
                         android:textSize="16sp"
                         android:enabled="false"></EditText>
@@ -104,7 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:hint="01 Vo Van Ngan"
+                        android:hint=""
                         android:textColor="@color/text_second"
                         android:textSize="16sp"
                         android:enabled="false"></EditText>

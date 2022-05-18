@@ -1,5 +1,6 @@
 package com.example.book_store.customadapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartItemViewHolder> {
@@ -39,11 +41,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         this.fragmentManager = fragmentManager;
         cartDao = new CartDao(context);
     }
+
+
     public void setData(List<CartItem> list){
         this.list = list;
         notifyDataSetChanged();
     }
-
     @NonNull
     @Override
     public CartItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,11 +55,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartItemViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CartItemViewHolder holder, @SuppressLint("RecyclerView") int position) {
         CartItem cartItem = list.get(position);
         if(cartItem == null){
             return;
         }
+        final int[] price = new int[1];
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Books");
         myRef.child(cartItem.getBookId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -66,8 +70,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                     Glide.with(context).load(book.getImgURL()).into(holder.img);
                     holder.txtTitle.setText(book.getTitle());
                     holder.txtAuthor.setText(book.getAuthor());
-                    String price = Integer.toString(book.getPrice());
-                    holder.txtPrice.setText(price);
+                    price[0] = book.getPrice();
+                    updateCartItemViewValue(holder,book.getPrice(),cartItem.getNum(),position);
                 }
             }
 
@@ -86,6 +90,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                 cartItem.setNum(num);
                 cartDao.updateCartItem(cartItem);
                 holder.txtNum.setText(Integer.toString(num));
+                updateCartItemViewValue(holder,price[0],cartItem.getNum(),position);
             }
         });
         holder.btnGiam.setOnClickListener(new View.OnClickListener() {
@@ -97,20 +102,23 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                     cartItem.setNum(num);
                     cartDao.updateCartItem(cartItem);
                     holder.txtNum.setText(Integer.toString(num));
+                    updateCartItemViewValue(holder,price[0],cartItem.getNum(),position);
                 }
             }
         });
         holder.btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("cart id",Integer.toString(cartItem.getId()));
                 cartDao.deleteCartItem(cartItem.getId());
                 list.remove(cartItem);
-                notifyDataSetChanged();
+                notifyItemRemoved(position);
             }
         });
     }
-
+    public void updateCartItemViewValue(CartItemViewHolder holder,int bookPrice,int num,int pos){
+        int price = bookPrice * num;
+        holder.txtPrice.setText(Integer.toString(price));
+    }
 
     @Override
     public int getItemCount() {
@@ -118,10 +126,9 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             return  list.size();
         return 0;
     }
-
     public class CartItemViewHolder extends RecyclerView.ViewHolder {
-        ImageView img;
-        TextView txtTitle,txtAuthor,txtPrice,txtNum;
+        public ImageView img;
+        public TextView txtTitle,txtAuthor,txtPrice,txtNum;
         Button btnTang,btnGiam;
         ImageView btnRemove;
         public CartItemViewHolder(@NonNull View itemView) {

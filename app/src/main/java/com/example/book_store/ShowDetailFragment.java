@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.book_store.database.CartDao;
 import com.example.book_store.model.Book;
+import com.example.book_store.model.CartItem;
 
 public class ShowDetailFragment extends Fragment {
     TextView txtTitle,txtPrice,txtDes,txtAuthor,txtYear,txtCate,txtNum;
@@ -20,6 +22,7 @@ public class ShowDetailFragment extends Fragment {
     Button btnGiam,btnTang,btnAddToCart;
     Book book;
     int numOfBook;
+    CartDao cartDao;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,10 +45,35 @@ public class ShowDetailFragment extends Fragment {
             book = bundle.getParcelable("book-target");
             fillData();
         }
+        cartDao = new CartDao(getContext());
         //handle event;
         //Tang giam so luong
         handleEventNumOfBook();
+        handleAddToCart();
+        //Them vao gio hang
         return view;
+    }
+    private void handleAddToCart(){
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String bookId = book.getId();
+                if(bookId != null){
+                    CartItem cartItem = new CartItem();
+                    cartItem.setBookId(bookId);
+                    cartItem.setNum(numOfBook);
+                    cartDao.addToCart(cartItem);
+                    changeToCartFragment();
+                }
+            }
+        });
+
+    }
+    private void changeToCartFragment(){
+        CartFragment cartFragment = new CartFragment();
+        this.getParentFragmentManager().beginTransaction().replace(R.id.container,cartFragment)
+                .addToBackStack(null)
+                .commit();
     }
     private void handleEventNumOfBook(){
         btnTang.setOnClickListener(new View.OnClickListener() {

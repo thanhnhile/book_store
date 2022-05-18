@@ -1,20 +1,33 @@
 package com.example.book_store.model;
 
 public class CartItem {
-    private Book book;
+    private int id;
+    private String bookId;
     private int num;
 
-    public CartItem(Book book, int num) {
-        this.book = book;
+    public CartItem(int id, String bookId, int num) {
+        this.id = id;
+        this.bookId = bookId;
         this.num = num;
     }
 
-    public Book getBook() {
-        return book;
+    public CartItem() {
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     public int getNum() {
@@ -23,13 +36,5 @@ public class CartItem {
 
     public void setNum(int num) {
         this.num = num;
-    }
-
-    @Override
-    public String toString() {
-        return "CartItem{" +
-                "book=" + book +
-                ", num=" + num +
-                '}';
     }
 }

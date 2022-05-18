@@ -2,21 +2,22 @@ package com.example.book_store.customadapter;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.book_store.CategoryShowAllBooksFragment;
 import com.example.book_store.R;
 import com.example.book_store.model.Category;
-import com.example.book_store.ui.GridSpacingItemDecoration;
 
 import java.util.List;
 
@@ -24,9 +25,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     Context context;
     List<Category> mList;
     FragmentManager fragmentManager;
-    public CategoryAdapter(Context context,FragmentManager fragmentManager) {
+    Boolean withViewAll;
+    public CategoryAdapter(Context context,FragmentManager fragmentManager,Boolean withViewAll) {
         this.context = context;
         this.fragmentManager = fragmentManager;
+        this.withViewAll = withViewAll;
     }
     public void setData(List<Category> list){
         this.mList = list;
@@ -46,16 +49,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             return;
         if(category.getCategory() != null){
             holder.txtName.setText(category.getCategory());
-            //Xu ly khi click vao xem toan bo sach thuoc category nay
-            holder.txtViewAll.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
         else{
             holder.txtName.setText("Kết quả tìm kiếm");
+        }
+        //Xu ly khi click vao xem toan bo sach thuoc category nay
+        if(withViewAll){
+            holder.txtViewAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    viewAllBookByCategory(category.getCategory());
+                }
+            });
+        }else{
             holder.txtViewAll.setVisibility(View.INVISIBLE);
         }
         //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false);
@@ -66,6 +72,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         BookAdpater bookAdpater = new BookAdpater(context,this.fragmentManager);
         bookAdpater.setData(category.getList());
         holder.rvBook.setAdapter(bookAdpater);
+    }
+    private void viewAllBookByCategory(String category){
+        CategoryShowAllBooksFragment fragment = new CategoryShowAllBooksFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("category_name",category);
+        fragment.setArguments(bundle);
+        FragmentTransaction ft = this.fragmentManager.beginTransaction();
+        ft.replace(R.id.container,fragment).addToBackStack(null).commit();
     }
 
     @Override
@@ -84,6 +98,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
             txtName = itemView.findViewById(R.id.category_txt_name);
             txtViewAll = itemView.findViewById(R.id.category_txt_viewAll);
+            txtViewAll.setVisibility(View.VISIBLE);
             rvBook = itemView.findViewById(R.id.category_recy_book);
         }
     }

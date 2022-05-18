@@ -5,6 +5,4 @@ public class Constants {
     public static final String LOGIN_KEY_PREFERENCE_NAME = "book_store_login";
     public static final String LOGIN_PHONE = "phone";
     public static final String LOGIN_IS_ADMIN = "isAdmin";
-    //cart
-    public static final String CART_KEY_PREFERENCE_NAME = "book_store_cart";
 }

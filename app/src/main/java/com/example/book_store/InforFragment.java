@@ -20,8 +20,6 @@ import com.bumptech.glide.Glide;
 import com.example.book_store.model.User;
 import com.example.book_store.sharedpreferences.Constants;
 import com.example.book_store.sharedpreferences.PreferenceManager;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

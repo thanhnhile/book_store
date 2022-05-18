@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         mainRecyclerView.setLayoutManager(linearLayoutManager);
         FragmentManager fragmentManager = getParentFragmentManager();
-        categoryAdapter = new CategoryAdapter(getContext(),fragmentManager);
+        categoryAdapter = new CategoryAdapter(getContext(),fragmentManager,true);
         mainRecyclerView.setAdapter(categoryAdapter);
         listCates = new ArrayList<>();
         getListCategorys();
@@ -121,23 +121,6 @@ public class HomeFragment extends Fragment {
         list.add(new Photo(R.drawable.img4));
         return list;
     }
-//    private void test(){
-//        bookList.add(new Book("1","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
-//                1,1,1,"a",1));
-//        bookList.add(new Book("2","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
-//                1,1,1,"a",1));
-//        bookList.add(new Book("3","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
-//                1,1,1,"a",1));
-//        bookList.add(new Book("4","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
-//                1,1,1,"a",1));
-//        if(listCates != null){
-//            for (String category:listCates){
-//                mListCategorys.add(new Category(category,bookList));
-//                categoryAdapter.setData(mListCategorys);
-//            }
-//        }else Log.e("categorys","null");
-//
-//    }
     //get list books by category
     private void getListCategorys(){
         CountDownLatch done = new CountDownLatch(1);
@@ -156,7 +139,6 @@ public class HomeFragment extends Fragment {
                 } catch(InterruptedException e) {
                     e.printStackTrace();
                 }
-                //getListBooks();
             }
 
             @Override
@@ -167,7 +149,6 @@ public class HomeFragment extends Fragment {
     }
     private void getListBooks(){
         for (String category:listCates){
-            Log.e("category",category);
             Query query = database.getReference("Books")
                     .orderByChild("category").equalTo(category)
                     .limitToFirst(4);
@@ -193,7 +174,6 @@ public class HomeFragment extends Fragment {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        Log.e("Chay vao day", Integer.toString(bookList.size()));
                     }
 
                 }
@@ -205,65 +185,6 @@ public class HomeFragment extends Fragment {
             });
 
         }
-    }
-//    private void getListBooks(String category){
-//        Log.e("So lan chay ham","Chay ham get List book");
-//        Query query = database.getReference("Books").orderByChild("category").equalTo(category).limitToLast(4);
-//        readData(query, new OnGetDataListener() {
-//            @Override
-//            public void onSuccess(DataSnapshot dataSnapshot) {
-//                if(dataSnapshot.exists()){
-//                    for(DataSnapshot data:dataSnapshot.getChildren()){
-//                        Book book = data.getValue(Book.class);
-//                        bookList.add(book);
-//                    }
-//                    Category e = new Category(category,bookList);
-//                    mListCategorys.add(e);
-//                    categoryAdapter.setData(mListCategorys);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onStart() {
-//                //when starting
-//                Log.d("ONSTART", "Started");
-//            }
-//
-//            @Override
-//            public void onFailure() {
-//                Log.d("onFailure", "Failed");
-//            }
-//        });
-//    }
-    public void readData(Query ref, final OnGetDataListener listener) {
-        listener.onStart();
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listener.onSuccess((snapshot));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                listener.onFailure();
-            }
-        });
-
-    }
-    public  void getData(DatabaseReference ref,final  OnGetDataListener listener){
-        listener.onStart();
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                listener.onSuccess(snapshot);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                listener.onFailure();
-            }
-        });
     }
 
 }

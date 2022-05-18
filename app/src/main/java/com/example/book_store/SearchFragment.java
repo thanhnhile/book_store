@@ -53,7 +53,7 @@ public class SearchFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         mainRecyclerView.setLayoutManager(linearLayoutManager);
         FragmentManager fragmentManager = getParentFragmentManager();
-        categoryAdapter = new CategoryAdapter(getContext(),fragmentManager);
+        categoryAdapter = new CategoryAdapter(getContext(),fragmentManager,false);
         mainRecyclerView.setAdapter(categoryAdapter);
         handleSearch();
         return rootView;

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.book_store.customadapter.CartItemAdapter;
+import com.example.book_store.database.CartDao;
 import com.example.book_store.model.Book;
 import com.example.book_store.model.CartItem;
 
@@ -23,11 +24,13 @@ public class CartFragment extends Fragment {
     RecyclerView cartRecyclerView;
     List<CartItem> cart;
     CartItemAdapter cartItemAdapter;
+    CartDao cartDao;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        cartDao = new CartDao(getContext());
         cart = new ArrayList<>();
         cartRecyclerView = (RecyclerView) view.findViewById(R.id.cart_recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
@@ -35,22 +38,26 @@ public class CartFragment extends Fragment {
         FragmentManager fragmentManager = getParentFragmentManager();
         cartItemAdapter = new CartItemAdapter(getContext(),fragmentManager);
         cartRecyclerView.setAdapter(cartItemAdapter);
-        testData();
-        Toast.makeText(getContext(), Integer.toString(cart.size()), Toast.LENGTH_SHORT).show();
+        getListCarts();
         return view;
     }
-    private void testData(){
-
-        Book b = new Book("1","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
-                1,1,1,"a",1);
-        Book b2 = new Book("2","b","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
-                1,1,1,"a",1);
-        cart.add(new CartItem(b,1));
-        cart.add(new CartItem(b,1));
-        cart.add(new CartItem(b2,2));
-        cart.add(new CartItem(b2,2));
-        cart.add(new CartItem(b2,5));
+    private void getListCarts(){
+        cart = cartDao.getAll();
         cartItemAdapter.setData(cart);
-
     }
+//    private void testData(){
+//
+//        Book b = new Book("1","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
+//                1,1,1,"a",1);
+//        Book b2 = new Book("2","b","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
+//                1,1,1,"a",1);
+//        cart.add(new CartItem(b,1));
+//        cart.add(new CartItem(b,1));
+//        cart.add(new CartItem(b2,2));
+//        cart.add(new CartItem(b2,2));
+//        cart.add(new CartItem(b2,5));
+//        cartItemAdapter.setData(cart);
+//        MenuActivity.setCountProductInCart(cart.size());
+//
+//    }
 }

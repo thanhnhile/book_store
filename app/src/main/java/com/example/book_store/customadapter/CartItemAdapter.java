@@ -1,6 +1,7 @@
 package com.example.book_store.customadapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.book_store.R;
+import com.example.book_store.database.BookDao;
+import com.example.book_store.database.CartDao;
+import com.example.book_store.model.Book;
 import com.example.book_store.model.CartItem;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -23,10 +32,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
     Context context;
     FragmentManager fragmentManager;
     List<CartItem> list;
+    CartDao cartDao;
 
     public CartItemAdapter(Context context, FragmentManager fragmentManager) {
         this.context = context;
         this.fragmentManager = fragmentManager;
+        cartDao = new CartDao(context);
     }
     public void setData(List<CartItem> list){
         this.list = list;
@@ -46,11 +57,25 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         if(cartItem == null){
             return;
         }
-        Glide.with(context).load(cartItem.getBook().getImgURL()).into(holder.img);
-        holder.txtTitle.setText(cartItem.getBook().getTitle());
-        holder.txtAuthor.setText(cartItem.getBook().getAuthor());
-        String price = Integer.toString(cartItem.getBook().getPrice());
-        holder.txtPrice.setText(price);
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Books");
+        myRef.child(cartItem.getBookId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    Book book = snapshot.getValue(Book.class);
+                    Glide.with(context).load(book.getImgURL()).into(holder.img);
+                    holder.txtTitle.setText(book.getTitle());
+                    holder.txtAuthor.setText(book.getAuthor());
+                    String price = Integer.toString(book.getPrice());
+                    holder.txtPrice.setText(price);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("get book error",error.getMessage());
+            }
+        });
         String num = Integer.toString(cartItem.getNum());
         holder.txtNum.setText(num);
         holder.btnTang.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +84,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                 int num = cartItem.getNum();
                 num += 1;
                 cartItem.setNum(num);
+                cartDao.updateCartItem(cartItem);
                 holder.txtNum.setText(Integer.toString(num));
             }
         });
@@ -69,6 +95,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
                 if(num > 1){
                     num -= 1;
                     cartItem.setNum(num);
+                    cartDao.updateCartItem(cartItem);
                     holder.txtNum.setText(Integer.toString(num));
                 }
             }
@@ -76,10 +103,14 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
         holder.btnRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Xoa cai nay", Toast.LENGTH_SHORT).show();
+                Log.e("cart id",Integer.toString(cartItem.getId()));
+                cartDao.deleteCartItem(cartItem.getId());
+                list.remove(cartItem);
+                notifyDataSetChanged();
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.book_store.database.CartDao;
 import com.example.book_store.model.Book;
 import com.example.book_store.model.CartItem;
+import com.example.book_store.ui.FormatCurrency;
 
 public class ShowDetailFragment extends Fragment {
     TextView txtTitle,txtPrice,txtDes,txtAuthor,txtYear,txtCate,txtNum;
@@ -96,7 +97,7 @@ public class ShowDetailFragment extends Fragment {
     }
     private void fillData(){
         txtTitle.setText(book.getTitle());
-        txtPrice.setText(Integer.toString(book.getPrice()));
+        txtPrice.setText(FormatCurrency.formatVND(book.getPrice()));
         Glide.with(getContext()).load(book.getImgURL()).into(img);
         txtDes.setText(book.getDescription());
         txtAuthor.setText(book.getAuthor());

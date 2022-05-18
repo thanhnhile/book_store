@@ -41,7 +41,7 @@
             android:textSize="16sp"
             android:fontFamily="@font/roboto_bold"
             android:textColor="@color/red"
-            android:text="100.000d"></TextView>
+            android:text="100000d"></TextView>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

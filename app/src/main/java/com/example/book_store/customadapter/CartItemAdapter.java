@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.book_store.CartFragment;
 import com.example.book_store.R;
 import com.example.book_store.database.BookDao;
 import com.example.book_store.database.CartDao;
@@ -111,13 +112,15 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
             public void onClick(View view) {
                 cartDao.deleteCartItem(cartItem.getId());
                 list.remove(cartItem);
-                notifyItemRemoved(position);
+                notifyDataSetChanged();
+                CartFragment.updateCartValue();
             }
         });
     }
     public void updateCartItemViewValue(CartItemViewHolder holder,int bookPrice,int num,int pos){
         int price = bookPrice * num;
         holder.txtPrice.setText(Integer.toString(price));
+        CartFragment.updateCartValue();
     }
 
     @Override

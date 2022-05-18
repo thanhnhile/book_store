@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.book_store.R;
 import com.example.book_store.admin.UpdateFragment;
 import com.example.book_store.model.Book;
+import com.example.book_store.ui.FormatCurrency;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -86,29 +87,8 @@ public class BookListViewAdapter extends BaseAdapter {
             viewHolder.active.setText("Đã ẩn");
             viewHolder.active.setTextColor(Color.parseColor("#d71a00"));
         }
-        String p = Integer.toString(book.getPrice());
-        viewHolder.price.setText(p);
+        viewHolder.price.setText(FormatCurrency.formatVND(book.getPrice()));
 
-//        TextView title = (TextView) view.findViewById(R.id.lv_txt_title);
-//        TextView author = (TextView) view.findViewById(R.id.lv_txt_author);
-//        TextView active = (TextView) view.findViewById(R.id.lv_txt_active);
-//        TextView price = (TextView) view.findViewById(R.id.lv_txt_price);
-//        ImageView img = (ImageView) view.findViewById(R.id.lv_img);
-//        //get image from URL
-//        Glide.with(context).load(book.getImgURL()).into(img);
-//        //
-//        title.setText(book.getTitle());
-//        author.setText(book.getAuthor());
-//        if(book.getIsActive() == 1){
-//            active.setText("Hoạt động");
-//            active.setTextColor(Color.parseColor("#35a813"));
-//        }
-//        else {
-//            active.setText("Đã ẩn");
-//            active.setTextColor(Color.parseColor("#d71a00"));
-//        }
-//        String p = Integer.toString(book.getPrice());
-//        price.setText(p);
         //handle event
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Books");

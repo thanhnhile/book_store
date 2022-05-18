@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.book_store.R;
 import com.example.book_store.ShowDetailFragment;
 import com.example.book_store.model.Book;
+import com.example.book_store.ui.FormatCurrency;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +61,7 @@ public class BookAdpater extends  RecyclerView.Adapter<BookAdpater.BookViewHolde
         if(book == null)
             return;
         holder.bookTitle.setText(book.getTitle());
-        String price = Integer.toString(book.getPrice());
-        holder.bookPrice.setText(price);
+        holder.bookPrice.setText(FormatCurrency.formatVND(book.getPrice()));
         Glide.with(context).load(book.getImgURL()).into(holder.bookImg);
         //onclick
         holder.rootView.setOnClickListener(new View.OnClickListener() {

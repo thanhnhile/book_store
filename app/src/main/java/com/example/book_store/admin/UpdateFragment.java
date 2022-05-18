@@ -33,6 +33,7 @@ import com.bumptech.glide.Glide;
 import com.example.book_store.R;
 import com.example.book_store.database.BookDao;
 import com.example.book_store.model.Book;
+import com.example.book_store.ui.FormatCurrency;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -237,7 +238,7 @@ public class UpdateFragment extends Fragment {
             int selectIndex = adapter.getPosition(book.getCategory());
             snCategory.setSelection(selectIndex);
         }
-        txtPrice.setText(Integer.toString(book.getPrice()));
+        txtPrice.setText(FormatCurrency.formatVND(book.getPrice()));
         txtNum.setText(Integer.toString(book.getInStock()));
         txtYear.setText(Integer.toString(book.getYear()));
         txtDes.setText(book.getDescription());

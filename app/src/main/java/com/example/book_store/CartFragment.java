@@ -20,6 +20,7 @@ import com.example.book_store.customadapter.CartItemAdapter;
 import com.example.book_store.database.CartDao;
 import com.example.book_store.model.Book;
 import com.example.book_store.model.CartItem;
+import com.example.book_store.ui.FormatCurrency;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,8 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartFragment extends Fragment {
-    RecyclerView cartRecyclerView;
-    TextView txtCartValue;
+    public static RecyclerView cartRecyclerView;
+    public static TextView txtCartValue;
     List<CartItem> cart;
     CartItemAdapter cartItemAdapter;
     CartDao cartDao;
@@ -61,7 +62,17 @@ public class CartFragment extends Fragment {
         updateCartValue();
 
     }
-    private void updateCartValue(){
+    public static void updateCartValue(){
+        int sum = 0;
+        View child;
+        for(int i=0;i<cartRecyclerView.getChildCount();i++){
+            child = cartRecyclerView.getChildAt(i);
+            RecyclerView.ViewHolder holder = cartRecyclerView.getChildViewHolder(child);
+            TextView txtPrice = holder.itemView.findViewById(R.id.lv_txt_price);
+            int price = Integer.parseInt(txtPrice.getText().toString());
+            sum += price;
+        }
+        txtCartValue.setText(FormatCurrency.formatVND(sum));
 
     }
 //    private void testData(){

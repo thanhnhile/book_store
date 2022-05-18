@@ -54,7 +54,7 @@
                     android:id="@+id/lv_txt_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="50.000"
+                    android:text="50000"
                     android:textColor="@color/red"
                     android:textSize="16sp"></TextView>
 

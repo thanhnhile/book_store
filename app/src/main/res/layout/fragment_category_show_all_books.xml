@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".CategoryShowAllBooksFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:padding="5dp"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
+
+        <Spinner
+            android:id="@+id/spinner_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="left"
+            android:spinnerMode="dropdown"></Spinner>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/header"
+        android:id="@+id/catetogory_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:nestedScrollingEnabled="true" />
+
+</RelativeLayout>

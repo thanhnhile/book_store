@@ -56,5 +56,7 @@ dependencies {
     implementation 'com.ea.async:ea-async:1.2.3'
     implementation 'com.google.firebase:firebase-auth:19.3.0'
     implementation "com.google.android.gms:play-services-gcm:10.2.1"
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-firestore:18.1.0'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -34,7 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Transaction;
 
 public class UpdateInforFragment extends Fragment {
-    EditText txtName,txtPhone,txtAddress;
+    EditText txtName,txtAddress;
     Button btnSave;
     Button btnBack;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -50,7 +50,6 @@ public class UpdateInforFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_update_infor, container, false);
         txtName = view.findViewById(R.id.updateinfor_txtname);
-        txtPhone = view.findViewById(R.id.updateinfor_txtphone);
         txtAddress = view.findViewById(R.id.updateinfor_txtaddress);
         btnSave = view.findViewById(R.id.updateinfor_btnUpdate);
 
@@ -80,7 +79,6 @@ public class UpdateInforFragment extends Fragment {
 
                     txtName.setText(name);
                     txtAddress.setText(address);
-                    txtPhone.setText(phone);
                 }
             }
 

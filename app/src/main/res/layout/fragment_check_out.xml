@@ -106,109 +106,62 @@
                         android:hint="Nhập địa chỉ.."
                         android:textColor="@color/text_second"
                         android:textSize="16sp"></EditText>
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Chọn phương thức thanh toán : "
-                        android:textColor="@color/text_second"
-                        android:textSize="20sp"
-                        android:layout_marginTop="10dp"
-                        android:textStyle="bold" />
-
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" >
-
-                        <RadioButton
-                            android:id="@+id/radioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/text_second"
-                            android:textSize="16sp"
-                            android:layout_marginTop="5dp"
-                            android:text="Thanh toán tiền mặt khi nhận hàng" />
-
-                        <RadioButton
-                            android:id="@+id/radioButton2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/text_second"
-                            android:textSize="16sp"
-                            android:layout_marginTop="5dp"
-                            android:text="Thanh toán qua ví điện tử" />
-
-                        <RadioButton
-                            android:id="@+id/radioButton3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/text_second"
-                            android:textSize="16sp"
-                            android:layout_marginTop="5dp"
-                            android:text="Thanh toán qua tài khoản ngân hàng" />
-                    </RadioGroup>
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Chọn phương thức giao hàng : "
-                        android:textColor="@color/text_second"
-                        android:textSize="20sp"
-                        android:layout_marginTop="10dp"
-                        android:textStyle="bold" />
-
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" >
-
-                        <RadioButton
-                            android:id="@+id/radioButton4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/text_second"
-                            android:textSize="16sp"
-                            android:layout_marginTop="5dp"
-                            android:text="Giao hàng nhanh ( 15.000 VND )" />
-
-                        <RadioButton
-                            android:id="@+id/radioButton5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/text_second"
-                            android:textSize="16sp"
-                            android:layout_marginTop="5dp"
-                            android:text="Giao hàng hỏa tốc ( 30.000 VND )" />
-
-                    </RadioGroup>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="18dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="18dp"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TỔNG HÓA ĐƠN : "
-                            android:textColor="@color/text_second"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/textView12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Phí giao hàng : "
+                                android:textColor="@color/text_second"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/txtTongGioHang"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0 VND"
-                            android:textColor="@color/text_second"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/txtPhiShip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20000 VND"
+                                android:textColor="@color/text_second"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="18dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="TỔNG HÓA ĐƠN : "
+                                android:textColor="@color/text_second"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtTongGioHang"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 VND"
+                                android:textColor="@color/text_second"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
                     </LinearLayout>
+
                     <Button
                         android:id="@+id/cart_btnConfirm"
                         android:layout_width="match_parent"

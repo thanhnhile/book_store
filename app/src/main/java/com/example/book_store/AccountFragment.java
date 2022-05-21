@@ -30,7 +30,9 @@ public class AccountFragment extends Fragment {
     TextView txtPhone;
     Button btnLogout;
     Button btnInfor;
+    Button btnChangePassword;
     Fragment inforFragment = new InforFragment();
+    Fragment changePassFragment = new ChangePasswordFragment();
     private DatabaseReference reference;
     private String phone;
     @Override
@@ -42,8 +44,10 @@ public class AccountFragment extends Fragment {
         txtPhone = view.findViewById(R.id.account_txtUserPhone);
         btnLogout = view.findViewById(R.id.account_btnLogOut);
         btnInfor = view.findViewById(R.id.account_btnInformation);
+        btnChangePassword = view.findViewById(R.id.account_btnChangePass);
         handleInfor();
         handleLogout();
+        handleChangePass();
         PreferenceManager preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
         phone = preferenceManager.getString(Constants.LOGIN_PHONE);
         reference = FirebaseDatabase.getInstance().getReference("Users");
@@ -82,7 +86,15 @@ public class AccountFragment extends Fragment {
         btnInfor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.container,inforFragment).addToBackStack(null).commit();
+                getParentFragmentManager().beginTransaction().replace(R.id.container,inforFragment).commit();
+            }
+        });
+    }
+    private void handleChangePass(){
+        btnChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getParentFragmentManager().beginTransaction().replace(R.id.container,changePassFragment).commit();
             }
         });
     }

@@ -93,7 +93,12 @@ public class InforFragment extends Fragment {
         btnUpdateInfor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getParentFragmentManager().beginTransaction().replace(R.id.container,updateInforFragment).commit();
+                PreferenceManager preferenceManager = new PreferenceManager(getContext(),Constants.LOGIN_KEY_PREFERENCE_NAME);
+                int isAdmin = preferenceManager.getInt(Constants.LOGIN_IS_ADMIN);
+                if(isAdmin == 1){
+                    getParentFragmentManager().beginTransaction().replace(R.id.admin_menu_container,updateInforFragment).commit();
+                }
+                else getParentFragmentManager().beginTransaction().replace(R.id.container,updateInforFragment).commit();
             }
         });
     }

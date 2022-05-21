@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ import java.util.List;
 public class CartFragment extends Fragment {
     public static RecyclerView cartRecyclerView;
     public static TextView txtCartValue;
+    Button btnBack;
     List<CartItem> cart;
     CartItemAdapter cartItemAdapter;
     CartDao cartDao;
@@ -47,6 +49,7 @@ public class CartFragment extends Fragment {
         //biding
         cartRecyclerView = (RecyclerView) view.findViewById(R.id.cart_recyclerview);
         txtCartValue = (TextView) view.findViewById(R.id.txtTongGioHang);
+        btnBack = (Button) view.findViewById(R.id.cart_btnBack);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         cartRecyclerView.setLayoutManager(linearLayoutManager);
         FragmentManager fragmentManager = getParentFragmentManager();
@@ -54,6 +57,8 @@ public class CartFragment extends Fragment {
         cartItemAdapter = new CartItemAdapter(getContext(),fragmentManager);
         cartRecyclerView.setAdapter(cartItemAdapter);
         getListCarts();
+        //handle event
+        handleBtnBack();
         return view;
     }
     private void getListCarts(){
@@ -75,19 +80,14 @@ public class CartFragment extends Fragment {
         txtCartValue.setText(FormatCurrency.formatVND(sum));
 
     }
-//    private void testData(){
-//
-//        Book b = new Book("1","a","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
-//                1,1,1,"a",1);
-//        Book b2 = new Book("2","b","a","a","https://firebasestorage.googleapis.com/v0/b/bookstore-3a6ce.appspot.com/o/images%2F2022_05_06_13_07_31?alt=media&token=6c1bf9e3-d25f-4314-aaa1-e837f734997b",
-//                1,1,1,"a",1);
-//        cart.add(new CartItem(b,1));
-//        cart.add(new CartItem(b,1));
-//        cart.add(new CartItem(b2,2));
-//        cart.add(new CartItem(b2,2));
-//        cart.add(new CartItem(b2,5));
-//        cartItemAdapter.setData(cart);
-//        MenuActivity.setCountProductInCart(cart.size());
-//
-//    }
+    private void handleBtnBack(){
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                FragmentManager fragmentManager = getParentFragmentManager();
+//                fragmentManager.beginTransaction().replace(R.id.container,getParentFragment()).commit();
+            }
+        });
+    }
+
 }

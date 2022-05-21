@@ -82,7 +82,12 @@ public class AccountFragment extends Fragment {
         btnInfor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().beginTransaction().replace(R.id.container,inforFragment).addToBackStack(null).commit();
+                PreferenceManager preferenceManager = new PreferenceManager(getContext(),Constants.LOGIN_KEY_PREFERENCE_NAME);
+                int isAdmin = preferenceManager.getInt(Constants.LOGIN_IS_ADMIN);
+                if(isAdmin == 1){
+                    getParentFragmentManager().beginTransaction().replace(R.id.admin_menu_container,inforFragment).addToBackStack(null).commit();
+                }
+                else getParentFragmentManager().beginTransaction().replace(R.id.container,inforFragment).addToBackStack(null).commit();
             }
         });
     }

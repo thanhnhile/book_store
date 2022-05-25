@@ -8,5 +8,7 @@ app bán sách
 6. Thanh Toán Vy
 7. Tìm kiếm Nhi -- 70
 8. Tài khoản (thông tin, đơn hàng của tôi,đăng xuất) Vy
-9. Chi tiết sản phẩm - 50
+9. Chi tiết sản phẩm - done
 10. CRUD sách --done
+11. Notification
+12. wifi connected listener

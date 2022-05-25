@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.example.book_store.database.CartDao;
 import com.example.book_store.model.Book;
 import com.example.book_store.model.CartItem;
 import com.example.book_store.ui.FormatCurrency;
+
+import java.text.DecimalFormat;
 
 public class ShowDetailFragment extends Fragment {
     TextView txtTitle,txtPrice,txtDes,txtAuthor,txtYear,txtCate,txtNum;

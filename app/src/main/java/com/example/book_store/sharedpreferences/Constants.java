@@ -10,4 +10,6 @@ public class Constants {
     public static  final String CHANNEL_NAME = "book_store_notification";
     public static  final String CHANNEL_DESCRIPTION = "book_store_description";
     public static  final String TITLE = "Book store";
+    public static final String NOTIFICATION_PREFERENCE_NAME = "book_store_notification";
+    public static final String NEW_BOOK_ID = "is_new_book";
 }

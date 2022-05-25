@@ -16,9 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.book_store.model.Book;
 import com.example.book_store.model.User;
 import com.example.book_store.sharedpreferences.Constants;
+import com.example.book_store.sharedpreferences.PreferenceManager;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -93,14 +95,13 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
     private void handleEventBookAdded(){
-        myRef.addChildEventListener(new ChildEventListener() {
+        myRef.limitToLast(1).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 if(snapshot.exists()){
                     Book newBook = snapshot.getValue(Book.class);
                     sendNotification(newBook);
                 }
-
             }
 
             @Override
@@ -123,8 +124,16 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
+
     }
     private void sendNotification(Book newBook){
+
+        PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext(),Constants.NOTIFICATION_PREFERENCE_NAME);
+        String newBookId = preferenceManager.getString(Constants.NEW_BOOK_ID);
+        if(newBookId == null || newBook.getId().equals(newBookId)){
+            return;
+        }
+        preferenceManager.putString(Constants.NEW_BOOK_ID,newBook.getId());
         NotificationManager nm = getSystemService(NotificationManager.class);
         NotificationChannel channel = new NotificationChannel(Constants.CHANNEL_ID,Constants.CHANNEL_NAME,NotificationManager.IMPORTANCE_DEFAULT);
         channel.setDescription(Constants.CHANNEL_DESCRIPTION);

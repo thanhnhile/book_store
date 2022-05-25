@@ -74,8 +74,13 @@ public class ChangePasswordFragment extends Fragment {
                 reference = FirebaseDatabase.getInstance().getReference("Users");
                 pass = value;
                 if (pass.equals(txtPass.getText().toString())) {
-                    reference.child(phone).child("password").setValue(txtNewPass.getText().toString());
-                    Toast.makeText(getActivity(), "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
+                    String newPass = txtNewPass.getText().toString();
+                    if(newPass.length() >= 6){
+                        reference.child(phone).child("password").setValue(newPass);
+                        Toast.makeText(getActivity(), "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
+                    }
+                    else  Toast.makeText(getActivity(),"Vui lòng nhập mật khẩu dài hơn 6 ký tự!",Toast.LENGTH_SHORT).show();
+
                 }
                 else {
                     Toast.makeText(getActivity(), "Thay doi mat khau that bai", Toast.LENGTH_SHORT).show();

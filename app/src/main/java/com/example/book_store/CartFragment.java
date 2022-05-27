@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,8 @@ import com.example.book_store.customadapter.CartItemAdapter;
 import com.example.book_store.database.CartDao;
 import com.example.book_store.model.Book;
 import com.example.book_store.model.CartItem;
+import com.example.book_store.sharedpreferences.Constants;
+import com.example.book_store.sharedpreferences.PreferenceManager;
 import com.example.book_store.ui.FormatCurrency;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,10 +39,13 @@ public class CartFragment extends Fragment {
     public static RecyclerView cartRecyclerView;
     public static TextView txtCartValue;
     Button btnBack;
+    Button btnCheckOut;
     List<CartItem> cart;
     CartItemAdapter cartItemAdapter;
     CartDao cartDao;
     List<Integer>cartItemValues;
+    Fragment checkOutFragment = new CheckOutFragment();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,6 +57,7 @@ public class CartFragment extends Fragment {
         cartRecyclerView = (RecyclerView) view.findViewById(R.id.cart_recyclerview);
         txtCartValue = (TextView) view.findViewById(R.id.txtTongGioHang);
         btnBack = (Button) view.findViewById(R.id.cart_btnBack);
+        btnCheckOut = (Button) view.findViewById(R.id.cart_btnCheckOut);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         cartRecyclerView.setLayoutManager(linearLayoutManager);
         FragmentManager fragmentManager = getParentFragmentManager();
@@ -59,6 +66,7 @@ public class CartFragment extends Fragment {
         cartRecyclerView.setAdapter(cartItemAdapter);
         getListCarts();
         //handle event
+        handleBtnCheckOut();
         handleBtnBack();
         return view;
     }
@@ -69,8 +77,8 @@ public class CartFragment extends Fragment {
 
     }
     public static void updateCartValue(){
-        int sum = 0;
         View child;
+        int sum = 0;
         for(int i=0;i<cartRecyclerView.getChildCount();i++){
             child = cartRecyclerView.getChildAt(i);
             RecyclerView.ViewHolder holder = cartRecyclerView.getChildViewHolder(child);
@@ -79,7 +87,6 @@ public class CartFragment extends Fragment {
             sum += price;
         }
         txtCartValue.setText(FormatCurrency.formatVND(sum));
-
     }
     private void handleBtnBack(){
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +94,33 @@ public class CartFragment extends Fragment {
             public void onClick(View v) {
 
 
+            }
+        });
+    }
+    private void handleBtnCheckOut(){
+        btnCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TextView editText = v.findViewById(R.id.txtTongGioHang);
+                View child;
+                int sum = 0;
+                for(int i=0;i<cartRecyclerView.getChildCount();i++){
+                    child = cartRecyclerView.getChildAt(i);
+                    RecyclerView.ViewHolder holder = cartRecyclerView.getChildViewHolder(child);
+                    TextView txtPrice = holder.itemView.findViewById(R.id.lv_txt_price);
+                    int price = Integer.parseInt(txtPrice.getText().toString());
+                    sum += price;
+                }
+                Bundle result = new Bundle();
+                result.putInt("value",sum);
+                getParentFragmentManager().setFragmentResult("data",result);
+                getParentFragmentManager().beginTransaction().replace(R.id.container,checkOutFragment).commit();
+//                PreferenceManager preferenceManager = new PreferenceManager(getContext(),Constants.LOGIN_KEY_PREFERENCE_NAME);
+//                int isAdmin = preferenceManager.getInt(Constants.LOGIN_IS_ADMIN);
+//                if(isAdmin == 1){
+//                    getParentFragmentManager().beginTransaction().replace(R.id.admin_menu_container,checkOutFragment).commit();
+//                }
+//                else getParentFragmentManager().beginTransaction().replace(R.id.container,checkOutFragment).commit();
             }
         });
     }

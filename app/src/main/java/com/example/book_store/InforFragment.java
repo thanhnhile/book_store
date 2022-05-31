@@ -54,6 +54,10 @@ public class InforFragment extends Fragment {
         handleUpdateInfor();
         PreferenceManager preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
         phone = preferenceManager.getString(Constants.LOGIN_PHONE);
+        if(phone == null) {
+            Toast.makeText(getContext(), "Đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show();
+            return view;
+        }
         reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

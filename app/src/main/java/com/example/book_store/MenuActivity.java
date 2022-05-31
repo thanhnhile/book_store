@@ -130,7 +130,7 @@ public class MenuActivity extends AppCompatActivity {
 
         PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext(),Constants.NOTIFICATION_PREFERENCE_NAME);
         String newBookId = preferenceManager.getString(Constants.NEW_BOOK_ID);
-        if(newBookId == null || newBook.getId().equals(newBookId)){
+        if(newBookId != null && newBook.getId().equals(newBookId)){
             return;
         }
         preferenceManager.putString(Constants.NEW_BOOK_ID,newBook.getId());

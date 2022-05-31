@@ -42,15 +42,17 @@ public class MainActivity extends AppCompatActivity {
                 //check login state
                 String phone = preferenceManager.getString(Constants.LOGIN_PHONE);
                 int isAdmin = preferenceManager.getInt(Constants.LOGIN_IS_ADMIN);
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+//               //Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                Intent i = new Intent(MainActivity.this,MenuActivity.class);
                 if(phone != null){
                     if(isAdmin == 1){
                         i = new Intent(MainActivity.this,AdminMenuActivity.class);
 
                     }
-                    else if(isAdmin == 0){
-                        i = new Intent(MainActivity.this,MenuActivity.class);
-                    }
+                }
+                else {
+                    preferenceManager.clear();
+                    i = new Intent(MainActivity.this,MenuActivity.class);
                 }
                 startActivity(i);
                 finish();

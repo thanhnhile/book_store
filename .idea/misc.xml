@@ -7,6 +7,7 @@
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_baseline_add_to_photos_24.xml" value="0.182" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_baseline_edit.xml" value="0.182" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_baseline_image_search.xml" value="0.182" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_baseline_list.xml" value="0.1735" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_baseline_timeline_24.xml" value="0.182" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_book_foreground.xml" value="0.1505" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/drawable/ic_cart.xml" value="0.182" />
@@ -45,18 +46,18 @@
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_c_r_u_d.xml" value="0.2" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_cart.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_category.xml" value="0.25" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_category_show_all_books.xml" value="0.22" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_category_show_all_books.xml" value="0.4279475982532751" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_check_out.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_infor.xml" value="0.18854166666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_order_list.xml" value="0.159375" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_search.xml" value="0.18" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_search.xml" value="0.5" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_show_detail.xml" value="0.22" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_update.xml" value="0.18854166666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_update_infor.xml" value="0.25" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/fragment_user_list.xml" value="0.18425925925925926" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/item_photo.xml" value="0.20416666666666666" />
-        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/style_spinner.xml" value="0.1" />
+        <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/style_spinner.xml" value="0.15" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/layout/viewholder_cart.xml" value="0.18" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/menu/account.xml" value="0.20416666666666666" />
         <entry key="..\:/HK06/LT Di Dong/book_store/app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />

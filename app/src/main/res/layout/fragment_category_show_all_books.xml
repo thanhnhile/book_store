@@ -7,29 +7,39 @@
     tools:context=".CategoryShowAllBooksFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <RelativeLayout
         android:padding="5dp"
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true">
-
-        <Spinner
-            android:id="@+id/spinner_sort"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical">
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="left"
-            android:spinnerMode="dropdown"></Spinner>
-    </LinearLayout>
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sắp xếp:"
+                android:layout_marginRight="3dp"></TextView>
+            <Spinner
+                android:id="@+id/spinner_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:spinnerMode="dropdown"></Spinner>
+        </LinearLayout>
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/header"
         android:id="@+id/catetogory_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_alignParentBottom="true"
         android:background="@color/background"
         android:nestedScrollingEnabled="true" />
-
 </RelativeLayout>

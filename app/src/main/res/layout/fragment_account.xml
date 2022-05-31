@@ -51,8 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
                 <TextView
                     android:id="@+id/account_txtUserName"
                     android:layout_width="match_parent"
@@ -75,50 +75,57 @@
             </LinearLayout>
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/account_btnInformation"
+        <LinearLayout
+            android:id="@+id/account_group_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primary_color"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:enabled="true"
-            android:text="Thông tin tài khoản" />
+            android:orientation="vertical"
+            android:visibility="gone">
+            <Button
+                android:id="@+id/account_btnInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_color"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:enabled="true"
+                android:text="Thông tin tài khoản" />
 
-        <Button
-            android:id="@+id/account_btnBills"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary_color"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:enabled="true"
-            android:text="Đơn hàng của tôi" />
+            <Button
+                android:id="@+id/account_btnBills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_color"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:enabled="true"
+                android:text="Đơn hàng của tôi" />
 
-        <Button
-            android:id="@+id/account_btnChangePass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/primary_color"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:enabled="true"
-            android:text="ĐỔI MẬT KHẨU" />
+            <Button
+                android:id="@+id/account_btnChangePass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_color"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:enabled="true"
+                android:text="ĐỔI MẬT KHẨU" />
 
-        <Button
-            android:id="@+id/account_btnLogOut"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/red"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:enabled="true"
-            android:text="ĐĂNG XUẤT" />
+            <Button
+                android:id="@+id/account_btnLogOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:enabled="true"
+                android:text="ĐĂNG XUẤT" />
+        </LinearLayout>
+
 
     </LinearLayout>
 

@@ -124,7 +124,7 @@ public class HomeFragment extends Fragment {
     //get list books by category
     private void getListCategorys(){
         CountDownLatch done = new CountDownLatch(1);
-        myRef = database.getReference("Categorys");
+        myRef = database.getReference("Categorys").orderByValue().getRef();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

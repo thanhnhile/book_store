@@ -79,8 +79,7 @@
             android:id="@+id/account_group_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:orientation="vertical">
             <Button
                 android:id="@+id/account_btnInformation"
                 android:layout_width="match_parent"

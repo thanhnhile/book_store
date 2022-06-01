@@ -147,10 +147,10 @@ public class CheckOutFragment extends Fragment {
                     databaseReference.child(timestamp).child("Items").child(Id).setValue(hashMap1);
                     Toast.makeText(getActivity(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(getActivity(), OrderDetailFragment.class);
-                    intent.putExtra("orderId",timestamp);
-                    intent.putExtra("orderBy",phoneNum);
-                    startActivity(intent);
+//                    Intent intent = new Intent(getActivity(), OrderDetailFragment.class);
+//                    intent.putExtra("orderId",timestamp);
+//                    intent.putExtra("orderBy",phoneNum);
+//                    startActivity(intent);
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {

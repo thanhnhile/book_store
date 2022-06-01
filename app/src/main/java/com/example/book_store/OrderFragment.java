@@ -31,6 +31,7 @@ public class OrderFragment extends Fragment {
     private ArrayList<Order> orderList;
     private OrderAdapter orderAdapter;
     private String phone;
+    PreferenceManager preferenceManager;
     public OrderFragment() {
         // Required empty public constructor
     }
@@ -41,6 +42,7 @@ public class OrderFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_order, container, false);
         orderRv = view.findViewById(R.id.order_recyclerview);
+        preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
         loadOrders();
         return view;
     }
@@ -52,7 +54,6 @@ public class OrderFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 orderList.clear();
-                PreferenceManager preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
                 phone = preferenceManager.getString(Constants.LOGIN_PHONE);
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(phone).child("Orders");
                 ref.orderByChild("orderBy").equalTo(phone).addValueEventListener(new ValueEventListener() {

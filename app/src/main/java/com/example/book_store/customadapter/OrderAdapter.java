@@ -2,6 +2,7 @@ package com.example.book_store.customadapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +65,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HolderOrder>
             @Override
             public void onClick(View v) {
                 //open order details
-                Intent intent = new Intent(context, OrderDetailFragment.class);
+                Intent intent;
+                intent = new Intent(context,OrderDetailFragment.class);
                 intent.putExtra("orderId",orderId);
                 intent.putExtra("orderBy",orderBy);
                 context.startActivity(intent);

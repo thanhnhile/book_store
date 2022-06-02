@@ -42,6 +42,9 @@
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/row_order_user"
+                app:stackFromEnd="true"
+                app:reverseLayout="true"
+
                 android:background="@color/background"
                 android:nestedScrollingEnabled="true" />
         </LinearLayout>

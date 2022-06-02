@@ -145,13 +145,15 @@ public class CheckOutFragment extends Fragment {
                     hashMap1.put("Quantity",num);
 
                     databaseReference.child(timestamp).child("Items").child(Id).setValue(hashMap1);
-                    Toast.makeText(getActivity(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
-
-                    Intent intent = new Intent(getActivity(), OrderDetailFragment.class);
-                    intent.putExtra("orderId",timestamp);
-                    intent.putExtra("orderBy",phoneNum);
-                    startActivity(intent);
                 }
+                Toast.makeText(getActivity(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("orderId",timestamp);
+                bundle.putString("orderBy",phoneNum);
+                orderDetailFragment.setArguments(bundle);
+                getParentFragmentManager().beginTransaction().replace(R.id.container,orderDetailFragment)
+                        .addToBackStack(null).commit();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

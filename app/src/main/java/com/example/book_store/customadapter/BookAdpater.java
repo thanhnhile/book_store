@@ -1,17 +1,14 @@
 package com.example.book_store.customadapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +19,6 @@ import com.example.book_store.ShowDetailFragment;
 import com.example.book_store.model.Book;
 import com.example.book_store.ui.FormatCurrency;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BookAdpater extends  RecyclerView.Adapter<BookAdpater.BookViewHolder> {

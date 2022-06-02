@@ -73,7 +73,7 @@ public class SearchFragment extends Fragment {
                 if(snapshot.exists()){
                     for (DataSnapshot data:snapshot.getChildren()){
                         Book b = data.getValue(Book.class);
-                        if(b.getIsActive() == 1)
+                        if(b.getIsActive() == 1 && b.getInStock() > 0)
                             listBooks.add(b);
                     }
                     mListCategorys.add(new Category(null,listBooks));

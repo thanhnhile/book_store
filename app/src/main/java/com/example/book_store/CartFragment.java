@@ -98,6 +98,12 @@ public class CartFragment extends Fragment {
         });
     }
     private void handleBtnCheckOut(){
+        PreferenceManager preferenceManager = new PreferenceManager(getContext(),Constants.LOGIN_KEY_PREFERENCE_NAME);
+        String phone = preferenceManager.getString(Constants.LOGIN_PHONE);
+        if(phone == null){
+            Toast.makeText(getContext(), "Vui lòng đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show();
+            return;
+        }
         btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

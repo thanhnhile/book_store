@@ -16,12 +16,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.book_store.model.Book;
-import com.example.book_store.model.User;
 import com.example.book_store.sharedpreferences.Constants;
 import com.example.book_store.sharedpreferences.PreferenceManager;
-import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.ChildEventListener;
@@ -54,11 +51,11 @@ public class MenuActivity extends AppCompatActivity {
         if(getIntent().getExtras() != null){
             Book newBook = getIntent().getExtras().getParcelable("book-target");
             Log.e("Book",newBook.getTitle());
-            ShowDetailFragment showDetailFragment = new ShowDetailFragment();
+            ShowDetailFragment cartDetailFragment = new ShowDetailFragment();
             Bundle bundle = new Bundle();
             bundle.putParcelable("book-target",newBook);
-            showDetailFragment.setArguments(bundle);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,showDetailFragment).commit();
+            cartDetailFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, cartDetailFragment).commit();
             return;
         }
         else{

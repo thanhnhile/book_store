@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.book_store.OrderDetailFragment;
@@ -23,10 +24,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HolderOrder>
 
     private Context context;
     private ArrayList<Order> orderList;
+    private FragmentManager fragmentManager;
 
-    public OrderAdapter(Context context, ArrayList<Order> orderList) {
+    public OrderAdapter(Context context, ArrayList<Order> orderList,FragmentManager fm) {
         this.context = context;
         this.orderList = orderList;
+        this.fragmentManager = fm;
     }
 
     @NonNull
@@ -65,13 +68,17 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HolderOrder>
             @Override
             public void onClick(View v) {
                 //open order details
-                Intent intent;
-                intent = new Intent(context,OrderDetailFragment.class);
-                intent.putExtra("orderId",orderId);
-                intent.putExtra("orderBy",orderBy);
-                context.startActivity(intent);
+                handleOrderItemClick(orderId,orderBy);
             }
         });
+    }
+    void handleOrderItemClick(String orderId,String orderBy){
+        OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("orderId",orderId);
+        bundle.putString("orderBy",orderBy);
+        orderDetailFragment.setArguments(bundle);
+        this.fragmentManager.beginTransaction().replace(R.id.container,orderDetailFragment).addToBackStack(null).commit();
     }
 
     @Override

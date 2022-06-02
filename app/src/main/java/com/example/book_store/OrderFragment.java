@@ -64,7 +64,8 @@ public class OrderFragment extends Fragment {
                                 Order order = ds.getValue(Order.class);
                                 orderList.add(order);
                             }
-                            orderAdapter = new OrderAdapter(getContext(),orderList);
+                            FragmentManager fragmentManager = getParentFragmentManager();
+                            orderAdapter = new OrderAdapter(getContext(),orderList,fragmentManager);
                             orderRv.setAdapter(orderAdapter);
                         }
                     }

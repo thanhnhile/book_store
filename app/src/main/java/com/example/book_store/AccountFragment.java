@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 public class AccountFragment extends Fragment {
     TextView txtName;
     TextView txtPhone;
+    LinearLayout groupBtn;
     Button btnLogout;
     Button btnInfor;
     Button btnChangePassword;
@@ -49,32 +51,49 @@ public class AccountFragment extends Fragment {
         btnLogout = view.findViewById(R.id.account_btnLogOut);
         btnInfor = view.findViewById(R.id.account_btnInformation);
         btnChangePassword = view.findViewById(R.id.account_btnChangePass);
-        handleOrder();
-        handleInfor();
-        handleLogout();
-        handleChangePass();
+        groupBtn = (LinearLayout) view.findViewById(R.id.account_group_btn);
         preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
         phone = preferenceManager.getString(Constants.LOGIN_PHONE);
-        reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User profile = snapshot.getValue(User.class);
-
-                if (profile != null){
-                    String name = profile.getFullName();
-
-                    txtName.setText(name);
-                    txtPhone.setText(phone);
+        if(phone == null){
+            fillData("Đăng nhập/Đăng ký","");
+            txtName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(),LoginActivity.class);
+                    startActivity(intent);
                 }
-            }
+            });
+        }
+        else {
+            reference = FirebaseDatabase.getInstance().getReference("Users");
+            reference.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User profile = snapshot.getValue(User.class);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                    if (profile != null){
+                        String name = profile.getFullName();
+                        fillData(name,phone);
+                    }
+                }
 
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            groupBtn.setVisibility(View.VISIBLE);
+            handleOrder();
+            handleInfor();
+            handleLogout();
+            handleChangePass();
+        }
+
         return view;
+    }
+    private void fillData(String name,String phone){
+        txtName.setText(name);
+        txtPhone.setText(phone);
     }
 
     private void handleOrder() {
@@ -95,7 +114,7 @@ public class AccountFragment extends Fragment {
                 if(preferenceManager == null)
                     return;
                 preferenceManager.clear();
-                Intent intent = new Intent(getContext(),LoginActivity.class);
+                Intent intent = new Intent(getContext(),MenuActivity.class);
                 startActivity(intent);
             }
         });

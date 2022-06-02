@@ -23,7 +23,7 @@ import java.text.DecimalFormat;
 public class ShowDetailFragment extends Fragment {
     TextView txtTitle,txtPrice,txtDes,txtAuthor,txtYear,txtCate,txtNum;
     ImageView img;
-    Button btnGiam,btnTang,btnAddToCart;
+    Button btnGiam,btnTang,btnAddToCart,btnCheckOut;
     Book book;
     int numOfBook;
     CartDao cartDao;
@@ -42,6 +42,7 @@ public class ShowDetailFragment extends Fragment {
         btnGiam = (Button) view.findViewById(R.id.btngiamsoluong);
         btnTang = (Button) view.findViewById(R.id.btntangsoloung);
         btnAddToCart = (Button) view.findViewById(R.id.detail_btnAddToCart);
+        btnCheckOut = (Button) view.findViewById(R.id.cart_btnCheckOut);
         txtNum = (TextView)view.findViewById(R.id.txtsoluong);
         numOfBook = 1;
         Bundle bundle = getArguments();

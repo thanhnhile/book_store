@@ -54,9 +54,12 @@ public class OrderDetailFragment extends Fragment {
         txtAmount = view.findViewById(R.id.txtAmount);
         txtTotalItems = view.findViewById(R.id.txtTotalItems);
         txtOrderStatus = view.findViewById(R.id.txtOrderStatus);
-        Intent intent = getActivity().getIntent();
-        orderBy = intent.getStringExtra("orderBy");
-        orderId = intent.getStringExtra("orderId");
+        itemsRv = (RecyclerView) view.findViewById(R.id.itemsRv);
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            orderId = bundle.getString("orderId");
+            orderBy = bundle.getString("orderBy");
+        }
         PreferenceManager preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
         phone = preferenceManager.getString(Constants.LOGIN_PHONE);
         loadOrderDetail();

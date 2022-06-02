@@ -95,7 +95,8 @@ public class CategoryShowAllBooksFragment extends Fragment {
                 if(snapshot.exists()){
                     for(DataSnapshot data:snapshot.getChildren()){
                         Book b = data.getValue(Book.class);
-                        listBooks.add(b);
+                        if(b.getIsActive() == 1 && b.getInStock()>0)
+                            listBooks.add(b);
                     }
                     list.add(new Category(category,listBooks));
                     categoryAdapter.setData(list);

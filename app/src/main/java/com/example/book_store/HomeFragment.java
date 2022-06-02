@@ -160,7 +160,8 @@ public class HomeFragment extends Fragment {
                         CountDownLatch done = new CountDownLatch(2);
                         for (DataSnapshot data : snapshot.getChildren()) {
                             Book book = data.getValue(Book.class);
-                            if(book.getIsActive() == 1){
+                            //Kiem tra dieu kien
+                            if(book.getIsActive() == 1 && book.getInStock() > 0){
                                 bookList.add(book);
                             }
                         }

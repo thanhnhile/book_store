@@ -143,7 +143,6 @@ public class CheckOutFragment extends Fragment {
                     hashMap1.put("Id",Id);
                     hashMap1.put("BookId",bookId);
                     hashMap1.put("Quantity",num);
-
                     databaseReference.child(timestamp).child("Items").child(Id).setValue(hashMap1);
                 }
                 Toast.makeText(getActivity(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();

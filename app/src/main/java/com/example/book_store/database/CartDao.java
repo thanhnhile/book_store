@@ -96,4 +96,9 @@ public class CartDao extends SQLiteOpenHelper {
         }
         return list;
     }
+    public void deleteAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME,null,null);
+        db.close();
+    }
 }

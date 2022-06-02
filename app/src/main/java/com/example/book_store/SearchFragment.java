@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.book_store.customadapter.CategoryAdapter;
 import com.example.book_store.model.Book;
 import com.example.book_store.model.Category;
+import com.example.book_store.ui.FilterCustomDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +38,7 @@ public class SearchFragment extends Fragment {
     List<Category> mListCategorys;
     List<Book> listBooks;
     CategoryAdapter categoryAdapter;
+    LinearLayout filter;
     SearchView searchView;
     RecyclerView mainRecyclerView;
     @Override
@@ -48,13 +51,16 @@ public class SearchFragment extends Fragment {
         myRef = database.getReference("Books");
         mListCategorys = new ArrayList<Category>();
         listBooks = new ArrayList<>();
+        //data biding
         searchView = rootView.findViewById(R.id.search);
         mainRecyclerView = (RecyclerView) rootView.findViewById(R.id.main_recycleView);
+        filter = (LinearLayout) rootView.findViewById(R.id.filter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         mainRecyclerView.setLayoutManager(linearLayoutManager);
         FragmentManager fragmentManager = getParentFragmentManager();
         categoryAdapter = new CategoryAdapter(getContext(),fragmentManager,false);
         mainRecyclerView.setAdapter(categoryAdapter);
+        handleFilter();
         handleSearch();
         return rootView;
     }
@@ -87,16 +93,28 @@ public class SearchFragment extends Fragment {
             }
         });
     }
+    private void handleFilter(){
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FilterCustomDialog filterCustomDialog = FilterCustomDialog.newInstance();
+                filterCustomDialog.setCategoryAdapter(categoryAdapter);
+                filterCustomDialog.show(fragmentManager,"test dialog");
+            }
+        });
+    }
     private void handleSearch(){
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                queryDB(s);
+                //queryDB(s);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
+                queryDB(s);
                 return false;
             }
         });

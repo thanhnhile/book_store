@@ -146,6 +146,8 @@ public class CheckOutFragment extends Fragment {
                     databaseReference.child(timestamp).child("Items").child(Id).setValue(hashMap1);
                 }
                 Toast.makeText(getActivity(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                //Delete all in cart
+                cartDao.deleteAll();
                 OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("orderId",timestamp);

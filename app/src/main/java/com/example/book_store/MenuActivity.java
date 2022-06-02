@@ -140,7 +140,7 @@ public class MenuActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.ic_book_foreground)
                 .setContentTitle(Constants.TITLE)
                 .setContentText(newBook.getTitle().toUpperCase(Locale.ROOT)+" đã có mặt trên BookStore, MUA NGAY!!")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true);
         //
         Intent intent = new Intent(getApplicationContext(),MenuActivity.class);

@@ -1,6 +1,7 @@
 package com.example.book_store.database;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -75,6 +76,29 @@ public class BookDao {
             }
         });
         return result[0];
+    }
+    public boolean updateBookInStock(String id,int minus){
+        final boolean[] result = new boolean[1];
+        myRef = database.getReference("Books");
+        myRef.child(id).child("inStock").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int oldInStock = snapshot.getValue(Integer.class);
+                int newInStocck = oldInStock - minus;
+                myRef.child(id).child("inStock").setValue(newInStocck).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        result[0]=true;
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                result[0] = false;
+            }
+        });
+        return  result[0];
     }
 
 }

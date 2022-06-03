@@ -18,13 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.book_store.customadapter.CartItemAdapter;
+import com.example.book_store.database.BookDao;
 import com.example.book_store.database.CartDao;
 import com.example.book_store.model.CartItem;
 import com.example.book_store.model.User;
 import com.example.book_store.sharedpreferences.Constants;
 import com.example.book_store.sharedpreferences.PreferenceManager;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +53,7 @@ public class CheckOutFragment extends Fragment {
     List<CartItem> cart;
     CartItemAdapter cartItemAdapter;
     CartDao cartDao;
+    BookDao bookDao;
     List<Integer>cartItemValues;
     public CheckOutFragment() {
         // Required empty public constructor
@@ -61,6 +65,7 @@ public class CheckOutFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_check_out, container, false);
         cartDao = new CartDao(getContext());
+        bookDao = new BookDao(getContext());
         cart = new ArrayList<>();
         txtName = (EditText) view.findViewById(R.id.checkout_txtname);
         txtPhone = (EditText) view.findViewById(R.id.checkout_txtphone);
@@ -143,7 +148,14 @@ public class CheckOutFragment extends Fragment {
                     hashMap1.put("Id",Id);
                     hashMap1.put("BookId",bookId);
                     hashMap1.put("Quantity",num);
-                    databaseReference.child(timestamp).child("Items").child(Id).setValue(hashMap1);
+                    databaseReference.child(timestamp).child("Items").child(Id).setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                                boolean result = bookDao.updateBookInStock(bookId,Integer.parseInt(num));
+                                if(result)
+                                    return;
+                        }
+                    });
                 }
                 Toast.makeText(getActivity(), "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
                 //Delete all in cart

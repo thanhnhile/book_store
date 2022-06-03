@@ -166,9 +166,11 @@ public class HomeFragment extends Fragment {
                             }
                         }
                         done.countDown();
-                        Category cate = new Category(category,bookList);
-                        mListCategorys.add(cate);
-                        categoryAdapter.setData(mListCategorys);
+                        if(bookList.size() > 0){
+                            Category cate = new Category(category,bookList);
+                            mListCategorys.add(cate);
+                            categoryAdapter.setData(mListCategorys);
+                        }
                         done.countDown();
                         try {
                             done.await(); //it will wait till the response is received from firebase.

@@ -25,7 +25,6 @@ public class AdminMenuActivity extends AppCompatActivity {
     CategoryFragment categoryFragment = new CategoryFragment();
     OrderListFragment orderListFragment = new OrderListFragment();
     AdminListbook adminListbook = new AdminListbook();
-    UserListFragment userListFragment = new UserListFragment();
     TextView btnAcc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +47,6 @@ public class AdminMenuActivity extends AppCompatActivity {
                         return true;
                     case R.id.list_book:
                         getSupportFragmentManager().beginTransaction().replace(R.id.admin_menu_container,adminListbook).commit();
-                        return true;
-                    case R.id.users:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.admin_menu_container,userListFragment).commit();
                         return true;
                 }
                 return false;

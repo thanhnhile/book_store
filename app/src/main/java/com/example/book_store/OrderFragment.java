@@ -57,7 +57,7 @@ public class OrderFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 orderList.clear();
                 phone = preferenceManager.getString(Constants.LOGIN_PHONE);
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users").child(phone).child("Orders");
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Orders");
                 ref.orderByChild("orderBy").equalTo(phone).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

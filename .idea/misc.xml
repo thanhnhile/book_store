@@ -79,7 +79,11 @@
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_check_out.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_infor.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_order_detail.xml" value="0.1539855072463768" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_order_detail_admin.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_order_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/fragment_update_infor.xml" value="0.2368659420289855" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/book_store/app/src/main/res/layout/row_order_admin.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

@@ -1,22 +1,20 @@
-package com.example.book_store;
+package com.example.book_store.admin;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.book_store.R;
 import com.example.book_store.customadapter.OrderedItemAdapter;
 import com.example.book_store.model.OrderedItem;
 import com.example.book_store.sharedpreferences.Constants;
@@ -30,9 +28,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class OrderDetailFragment extends Fragment {
+
+public class OrderDetailAdminFragment extends Fragment {
     private String orderId, orderBy;
-    private TextView txtOrderId, txtDate, txtOrderStatus, txtTotalItems, txtAmount;
+    private TextView txtOrderId, txtDate, txtOrderStatus, txtTotalItems, txtAmount, txtOrderBy;
     private RecyclerView itemsRv;
     private String phone;
     private Context context;
@@ -40,19 +39,15 @@ public class OrderDetailFragment extends Fragment {
     private OrderedItemAdapter orderedItemAdapter;
 
 
-    public OrderDetailFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_order_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_order_detail_admin, container, false);
         txtOrderId = view.findViewById(R.id.txtOrderId);
         txtDate = view.findViewById(R.id.txtDate);
         txtAmount = view.findViewById(R.id.txtAmount);
+        txtOrderBy = view.findViewById(R.id.txtOrderBy);
         txtTotalItems = view.findViewById(R.id.txtTotalItems);
         txtOrderStatus = view.findViewById(R.id.txtOrderStatus);
         itemsRv = (RecyclerView) view.findViewById(R.id.itemsRv);
@@ -64,6 +59,7 @@ public class OrderDetailFragment extends Fragment {
         PreferenceManager preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
         phone = preferenceManager.getString(Constants.LOGIN_PHONE);
         loadOrderDetail();
+//        loadOrderedItems();
         return view;
     }
 
@@ -118,6 +114,7 @@ public class OrderDetailFragment extends Fragment {
                 txtDate.setText(formatedTime);
                 txtOrderStatus.setText(orderStatus);
                 txtAmount.setText(orderCost);
+                txtOrderBy.setText(orderBy);
                 loadOrderedItems();
             }
 
@@ -127,4 +124,5 @@ public class OrderDetailFragment extends Fragment {
             }
         });
     }
+
 }

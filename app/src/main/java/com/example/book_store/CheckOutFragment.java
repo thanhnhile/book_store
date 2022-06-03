@@ -129,7 +129,7 @@ public class CheckOutFragment extends Fragment {
         hashMap.put("orderStatus","In Progess");
         hashMap.put("orderBy",""+phoneNum);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(phone).child("Orders");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Orders");
         databaseReference.child(timestamp).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

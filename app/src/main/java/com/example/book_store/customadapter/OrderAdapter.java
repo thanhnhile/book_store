@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.book_store.OrderDetailFragment;
 import com.example.book_store.R;
 import com.example.book_store.model.Order;
+import com.example.book_store.sharedpreferences.Constants;
+import com.example.book_store.sharedpreferences.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -73,12 +75,20 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.HolderOrder>
         });
     }
     void handleOrderItemClick(String orderId,String orderBy){
+        PreferenceManager preferenceManager = new PreferenceManager(context, Constants.LOGIN_KEY_PREFERENCE_NAME);
+        int isAdmin = preferenceManager.getInt(Constants.LOGIN_IS_ADMIN);
         OrderDetailFragment orderDetailFragment = new OrderDetailFragment();
         Bundle bundle = new Bundle();
         bundle.putString("orderId",orderId);
         bundle.putString("orderBy",orderBy);
         orderDetailFragment.setArguments(bundle);
-        this.fragmentManager.beginTransaction().replace(R.id.container,orderDetailFragment).addToBackStack(null).commit();
+        int containerID;
+        if(isAdmin == 1){
+            containerID = R.id.admin_menu_container;
+        }
+        else containerID = R.id.container;
+        this.fragmentManager.beginTransaction()
+                .replace(containerID,orderDetailFragment).addToBackStack(null).commit();
     }
 
     @Override

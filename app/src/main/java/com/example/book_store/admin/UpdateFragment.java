@@ -238,7 +238,7 @@ public class UpdateFragment extends Fragment {
             int selectIndex = adapter.getPosition(book.getCategory());
             snCategory.setSelection(selectIndex);
         }
-        txtPrice.setText(FormatCurrency.formatVND(book.getPrice()));
+        txtPrice.setText(Integer.toString(book.getPrice()));
         txtNum.setText(Integer.toString(book.getInStock()));
         txtYear.setText(Integer.toString(book.getYear()));
         txtDes.setText(book.getDescription());

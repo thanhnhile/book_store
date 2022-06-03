@@ -32,6 +32,7 @@ public class OrderFragment extends Fragment {
     private OrderAdapter orderAdapter;
     private String phone;
     PreferenceManager preferenceManager;
+    FragmentManager fragmentManager;
     public OrderFragment() {
         // Required empty public constructor
     }
@@ -43,6 +44,7 @@ public class OrderFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
         orderRv = view.findViewById(R.id.order_recyclerview);
         preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
+        fragmentManager = getParentFragmentManager();
         loadOrders();
         return view;
     }
@@ -64,7 +66,6 @@ public class OrderFragment extends Fragment {
                                 Order order = ds.getValue(Order.class);
                                 orderList.add(order);
                             }
-                            FragmentManager fragmentManager = getParentFragmentManager();
                             orderAdapter = new OrderAdapter(getContext(),orderList,fragmentManager);
                             orderRv.setAdapter(orderAdapter);
                         }

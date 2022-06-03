@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Order Id"
+                        android:text="Mã đơn hàng"
                         android:textColor="@color/primary_color"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Date"
+                        android:text="Ngày đặt"
                         android:textColor="@color/primary_color"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
@@ -90,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Order Status"
+                        android:text="Trạng thái"
                         android:textColor="@color/primary_color"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Items"
+                        android:text="Số lượng"
                         android:textColor="@color/primary_color"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
@@ -130,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
-                        android:text="Amount"
+                        android:text="Giá trị"
                         android:textColor="@color/primary_color"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:textColor="@color/primary_color"
-            android:text="Ordered Items"
+            android:text="Chi tiết hóa đơn"
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="20sp"/>
@@ -159,6 +159,7 @@
             android:id="@+id/itemsRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:minHeight="500dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/row_ordereditem"/>
     </LinearLayout>

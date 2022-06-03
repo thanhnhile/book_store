@@ -19,6 +19,7 @@ import com.example.book_store.database.CartDao;
 import com.example.book_store.model.Book;
 import com.example.book_store.model.CartItem;
 import com.example.book_store.model.OrderedItem;
+import com.example.book_store.ui.FormatCurrency;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,12 +34,10 @@ public class OrderedItemAdapter extends RecyclerView.Adapter<OrderedItemAdapter.
     private Context context;
     private ArrayList<OrderedItem> orderedItemList;
     FragmentManager fragmentManager;
-    CartDao cartDao;
 
     public OrderedItemAdapter(Context context, ArrayList<OrderedItem> orderedItemList) {
         this.context = context;
         this.orderedItemList = orderedItemList;
-        cartDao = new CartDao(context);
     }
     public void setData(ArrayList<OrderedItem> orderedItemList){
         this.orderedItemList = orderedItemList;
@@ -55,18 +54,10 @@ public class OrderedItemAdapter extends RecyclerView.Adapter<OrderedItemAdapter.
     @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull HolderOrderedItem holder, @SuppressLint("RecyclerView") int position) {
-//        OrderedItem orderedItem = orderedItemList.get(position);
-//        String Id = orderedItem.getId();
-//        String BookId = orderedItem.getBookId();
-//        String Quantity = orderedItem.getQuantity();
-//
-//        holder.txtTitle.setText(BookId);
-//        holder.txtQuantiy.setText(Quantity);
         OrderedItem orderedItem = orderedItemList.get(position);
         if(orderedItem == null){
             return;
         }
-        final int[] price = new int[1];
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Books");
         myRef.child(orderedItem.getBookId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -74,8 +65,15 @@ public class OrderedItemAdapter extends RecyclerView.Adapter<OrderedItemAdapter.
                 if(snapshot.exists()){
                     Book book = snapshot.getValue(Book.class);
                     holder.txtTitle.setText(book.getTitle());
-                    price[0] = book.getPrice();
-                    updateOrderedItemViewValue(holder,book.getPrice(),orderedItem.getQuantity(),position);
+                    holder.txtAuthor.setText(book.getAuthor());
+                    int price = book.getPrice();
+                    String priceTxt = Integer.toString(price);
+                    holder.txtPrice.setText(priceTxt);
+                    String num = orderedItem.getQuantity();
+                    holder.txtQuantiy.setText(num);
+                    int number = Integer.parseInt(num);
+                    int eachPrice = number * price;
+                    holder.txtPriceEach.setText(FormatCurrency.formatVND(eachPrice));
                 }
             }
 
@@ -84,14 +82,7 @@ public class OrderedItemAdapter extends RecyclerView.Adapter<OrderedItemAdapter.
                 Log.e("get ordered item error",error.getMessage());
             }
         });
-        String num = orderedItem.getQuantity();
-        holder.txtQuantiy.setText(num);
-    }
-    public void updateOrderedItemViewValue(OrderedItemAdapter.HolderOrderedItem holder, int bookPrice, String num, int pos){
-        int quantity = Integer.parseInt(num);
-        int price = bookPrice * quantity;
-        holder.txtPrice.setText(price);
-        CartFragment.updateCartValue();
+
     }
     @Override
     public int getItemCount() {
@@ -99,12 +90,13 @@ public class OrderedItemAdapter extends RecyclerView.Adapter<OrderedItemAdapter.
     }
 
     class HolderOrderedItem extends RecyclerView.ViewHolder{
-        private TextView txtTitle,txtPrice, txtPriceEach,txtQuantiy;
+        private TextView txtTitle,txtPrice, txtPriceEach,txtQuantiy,txtAuthor;
 
         public HolderOrderedItem(@NonNull View itemView) {
             super(itemView);
 
             txtTitle = itemView.findViewById(R.id.txtTitle);
+            txtAuthor = itemView.findViewById(R.id.txtAuthor);
             txtPrice = itemView.findViewById(R.id.txtPrice);
             txtPriceEach = itemView.findViewById(R.id.txtPriceEach);
             txtQuantiy = itemView.findViewById(R.id.txtQuantity);

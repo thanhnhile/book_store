@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="3dp"
     app:contentPadding="5dp"
@@ -11,34 +11,49 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/txtTitle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:minWidth="200dp"
+            android:maxLines="2"
             android:layout_height="wrap_content"
             android:text="Title"
+            android:fontFamily="@font/roboto_bold"
             android:textSize="16sp"
+            android:layout_marginRight="10dp"
             android:textColor="@color/primary_color"/>
         <TextView
-            android:id="@+id/txtPrice"
+            android:layout_marginTop="5dp"
+            android:id="@+id/txtAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtTitle"
             android:gravity="center"
-            android:text="200"
+            android:text="tac gia"
             android:textSize="16sp"
-            android:textColor="@color/primary_color"/>
+            android:layout_marginRight="20dp"/>
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/txtTitle">
+            android:layout_below="@id/txtTitle"
+            android:layout_marginLeft="10dp">
             <TextView
-                android:id="@+id/txtPriceEach"
+                android:id="@+id/txtPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="200"
+                android:text="gia"
                 android:textSize="15sp"
                 android:textColor="@color/text_second" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_marginStart="4dp"
+                android:text="x"
+                android:textColor="@color/text_second"/>
             <TextView
                 android:id="@+id/txtQuantity"
                 android:layout_width="wrap_content"
@@ -49,6 +64,18 @@
                 android:text="2"
                 android:textColor="@color/text_second"/>
         </LinearLayout>
+        <TextView
+            android:id="@+id/txtPriceEach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="5000"
+            android:textColor="@color/text_second"
+            android:textSize="16sp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
+
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,15 +64,14 @@ public class OrderDetailFragment extends Fragment {
         PreferenceManager preferenceManager = new PreferenceManager(getContext(), Constants.LOGIN_KEY_PREFERENCE_NAME);
         phone = preferenceManager.getString(Constants.LOGIN_PHONE);
         loadOrderDetail();
-        loadOrderedItems();
+//        loadOrderedItems();
         return view;
     }
 
     private void loadOrderedItems() {
         orderedItemList = new ArrayList<>();
-
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-        ref.child(phone).child("Orders").child("Items").child(orderId).addValueEventListener(new ValueEventListener() {
+        ref.child(phone).child("Orders").child(orderId).child("Items").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 orderedItemList.clear();
@@ -79,6 +79,7 @@ public class OrderDetailFragment extends Fragment {
                     OrderedItem orderedItem = ds.getValue(OrderedItem.class);
                     orderedItemList.add(orderedItem);
                 }
+                Log.e("size",Integer.toString(orderedItemList.size()));
                 orderedItemAdapter = new OrderedItemAdapter(getContext(),orderedItemList);
                 itemsRv.setAdapter(orderedItemAdapter);
                 txtTotalItems.setText(""+snapshot.getChildrenCount());
@@ -119,6 +120,7 @@ public class OrderDetailFragment extends Fragment {
                 txtDate.setText(formatedTime);
                 txtOrderStatus.setText(orderStatus);
                 txtAmount.setText(orderCost);
+                loadOrderedItems();
             }
 
             @Override

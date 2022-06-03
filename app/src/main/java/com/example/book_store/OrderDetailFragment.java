@@ -79,7 +79,6 @@ public class OrderDetailFragment extends Fragment {
                     OrderedItem orderedItem = ds.getValue(OrderedItem.class);
                     orderedItemList.add(orderedItem);
                 }
-                Log.e("size",Integer.toString(orderedItemList.size()));
                 orderedItemAdapter = new OrderedItemAdapter(getContext(),orderedItemList);
                 itemsRv.setAdapter(orderedItemAdapter);
                 txtTotalItems.setText(""+snapshot.getChildrenCount());
